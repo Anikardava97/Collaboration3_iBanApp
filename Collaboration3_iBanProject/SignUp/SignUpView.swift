@@ -26,16 +26,16 @@ struct SignUpView: View {
     // MARK: - Content
     private var content: some View {
         components
-        .background(Color.customBackgroundColor)
-        .edgesIgnoringSafeArea(.all)
-        .onChange(of: password) { newValue in
-            isMinLengthMet = newValue.count >= 8
-            isCapitalLetterMet = newValue.rangeOfCharacter(from: .uppercaseLetters) != nil
-            isNumberMet = newValue.rangeOfCharacter(from: .decimalDigits) != nil
-            isUniqueCharacterMet = newValue.rangeOfCharacter(from: CharacterSet(charactersIn: "@#$%^&*")) != nil
-            
-            isSignUpEnabled = isMinLengthMet && isCapitalLetterMet && isNumberMet && isUniqueCharacterMet
-        }
+            .background(Color.customBackgroundColor)
+            .edgesIgnoringSafeArea(.all)
+            .onChange(of: password) { newValue in
+                isMinLengthMet = newValue.count >= 8
+                isCapitalLetterMet = newValue.rangeOfCharacter(from: .uppercaseLetters) != nil
+                isNumberMet = newValue.rangeOfCharacter(from: .decimalDigits) != nil
+                isUniqueCharacterMet = newValue.rangeOfCharacter(from: CharacterSet(charactersIn: "@#$%^&*")) != nil
+                
+                isSignUpEnabled = isMinLengthMet && isCapitalLetterMet && isNumberMet && isUniqueCharacterMet
+            }
     }
     
     private var components: some View {
@@ -56,7 +56,7 @@ struct SignUpView: View {
             Spacer()
         }
     }
-
+    
     // MARK: - Register
     private func register() {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in

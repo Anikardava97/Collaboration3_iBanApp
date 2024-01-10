@@ -26,16 +26,16 @@ struct EmailTextField: View {
                 }
                 TextField("", text: $email)
             }
-                .foregroundStyle(.white)
-                .tint(.white)
-                .padding(.horizontal, 16)
-                .frame(height: 48)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.customAccentColor.opacity(0.5), lineWidth: 1.0)
-                )
-                .background(Color.customTextFieldColor)
-                .foregroundStyle(.white)
+            .foregroundStyle(.white)
+            .tint(.white)
+            .padding(.horizontal, 16)
+            .frame(height: 48)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.customAccentColor.opacity(0.5), lineWidth: 1.0)
+            )
+            .background(Color.customTextFieldColor)
+            .foregroundStyle(.white)
         }
         .padding(.horizontal, 16)
     }

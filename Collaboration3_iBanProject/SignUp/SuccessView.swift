@@ -6,14 +6,25 @@
 //
 
 import SwiftUI
+import SPConfetti
 
 struct SuccessView: View {
+    // MARK: - Properties
+    @State private var isPresenting = false
+    
     // MARK: - Body
     var body: some View {
         ZStack {
             Color.customBackgroundColor.ignoresSafeArea()
             content
         }
+        .onAppear {
+            isPresenting.toggle()
+        }
+        .confetti(isPresented: $isPresenting,
+                  animation: .fullWidthToDown,
+                  particles: [.triangle, .arc],
+                  duration: 6.0)
     }
     
     // MARK: - Content
@@ -43,8 +54,8 @@ struct SuccessView: View {
                 Text("Login now to start managing your iBans effortlessly.")
             }
             .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
         }
     }
     
