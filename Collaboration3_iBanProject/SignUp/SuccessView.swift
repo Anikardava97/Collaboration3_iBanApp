@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct SuccessView: View {
-    // MARK: - Properties
-    
     // MARK: - Body
     var body: some View {
         ZStack {
