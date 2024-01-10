@@ -6,27 +6,25 @@
 //
 
 import SwiftUI
-
+import Firebase
 
 struct SignUpView: View {
-    @State private var fullName: String = ""
+    // MARK: - Properties
     @State private var email: String = ""
     @State private var password: String = ""
+    
     @State private var isSignUpEnabled: Bool = false
+
     @State private var isMinLengthMet: Bool = false
     @State private var isCapitalLetterMet: Bool = false
     @State private var isNumberMet: Bool = false
     @State private var isUniqueCharacterMet: Bool = false
     
-    
+    // MARK: - Body
     var body: some View {
         VStack {
             Spacer()
-            Image("logoWithTitle")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 150, height: 150)
-                .padding(.bottom, 60)
+            logoImage
                         
             EmailTextField(email: $email)
             
@@ -40,7 +38,7 @@ struct SignUpView: View {
             )
             
             Spacer()
-            SignUpButton(isEnabled: isSignUpEnabled)
+            SignUpButton(isEnabled: isSignUpEnabled, onTap: register)
     
             Spacer()
         }
@@ -55,24 +53,38 @@ struct SignUpView: View {
             isSignUpEnabled = isMinLengthMet && isCapitalLetterMet && isNumberMet && isUniqueCharacterMet
         }
     }
+    
+    // MARK: - Components
+    private var logoImage: some View {
+        Image.logoWithTitle
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 150, height: 150)
+            .padding(.bottom, 60)
+    }
+    
+    // MARK: - Register
+    private func register() {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
+    }
 }
+
 
 
 struct SignUpButton: View {
     var isEnabled: Bool
+    var onTap: () -> Void
     
     var body: some View {
         Button(action: {
-            // Action for sign up button
+            onTap()
         }) {
-            Text("Sign Up")
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(isEnabled ? Color.customAccentColor : Color.gray)
-                .cornerRadius(8.0)
-                .padding(.horizontal)
-                .opacity(isEnabled ? 1.0 : 0.5)
+            PrimaryButtonComponentView(text: "Sign Up")
+                .opacity(isEnabled ? 1.0 : 0.3)
                 .disabled(!isEnabled)
         }
     }

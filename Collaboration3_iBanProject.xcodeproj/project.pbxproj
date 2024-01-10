@@ -31,7 +31,7 @@
 		EE4D2B3F2B4EB3AA003242BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE4D2B422B4EB3AA003242BD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EE4D2B552B4EB555003242BD /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		EE4D2B572B4EB566003242BD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EE4D2B572B4EB566003242BD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ../Login/LoginView.swift; sourceTree = "<group>"; };
 		EE4D2B592B4EB57C003242BD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		EE4D2B5B2B4EB590003242BD /* IbanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IbanListView.swift; sourceTree = "<group>"; };
 		EE4D2B5D2B4EB5B1003242BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,7 +78,6 @@
 				EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */,
 				EE4D2B5D2B4EB5B1003242BD /* ContentView.swift */,
 				EE4D2B492B4EB42D003242BD /* Onboarding */,
-				EE4D2B4C2B4EB46D003242BD /* Login */,
 				EE4D2B4F2B4EB48D003242BD /* SignUp */,
 				EE4D2B522B4EB4C2003242BD /* IBanList */,
 				EE4D2B622B4EB787003242BD /* Components */,
@@ -106,17 +105,10 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		EE4D2B4C2B4EB46D003242BD /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				EE4D2B572B4EB566003242BD /* LoginView.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		EE4D2B4F2B4EB48D003242BD /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				EE4D2B572B4EB566003242BD /* LoginView.swift */,
 				EE4D2B592B4EB57C003242BD /* SignUpView.swift */,
 			);
 			path = SignUp;

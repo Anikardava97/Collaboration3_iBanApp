@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Firebase
 
 struct LoginView: View {
     @State private var email: String = ""
@@ -39,12 +39,20 @@ struct LoginView: View {
             .padding(.top, 20)
             
             Spacer()
-            LoginButton()
+            LoginButton(onTap: login)
             
             Spacer()
         }
         .background(Color.customBackgroundColor)
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    func login() {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
     }
 }
 
@@ -87,9 +95,11 @@ struct PasswordSecureField: View {
 }
 
 struct LoginButton: View {
+    var onTap: () -> Void
+
     var body: some View {
         Button(action: {
-            // Action for login button
+            onTap()
         }) {
             Text("Log In")
                 .foregroundColor(.white)
