@@ -30,6 +30,7 @@
 		EE4D2C322B4F3FB1003242BD /* PasswordSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */; };
 		EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */; };
 		EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C352B4F42F9003242BD /* SuccessView.swift */; };
+		EE4D2C3F2B4F5396003242BD /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = EE4D2C3E2B4F5396003242BD /* SPConfetti */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 				EE4D2BF82B4F1653003242BD /* FirebaseAnalyticsSwift in Frameworks */,
 				EE4D2BF42B4F1653003242BD /* FirebaseAnalytics in Frameworks */,
 				EE4D2C002B4F1653003242BD /* FirebaseAuth in Frameworks */,
+				EE4D2C3F2B4F5396003242BD /* SPConfetti in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +191,7 @@
 				EE4D2BF72B4F1653003242BD /* FirebaseAnalyticsSwift */,
 				EE4D2BFF2B4F1653003242BD /* FirebaseAuth */,
 				EE4D2C0B2B4F1653003242BD /* FirebaseFirestore */,
+				EE4D2C3E2B4F5396003242BD /* SPConfetti */,
 			);
 			productName = Collaboration3_iBanProject;
 			productReference = EE4D2B382B4EB3A8003242BD /* Collaboration3_iBanProject.app */;
@@ -220,6 +223,7 @@
 			mainGroup = EE4D2B2F2B4EB3A8003242BD;
 			packageReferences = (
 				EE4D2BF22B4F1653003242BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EE4D2C3D2B4F5396003242BD /* XCRemoteSwiftPackageReference "SPConfetti" */,
 			);
 			productRefGroup = EE4D2B392B4EB3A8003242BD /* Products */;
 			projectDirPath = "";
@@ -487,6 +491,14 @@
 				minimumVersion = 10.19.1;
 			};
 		};
+		EE4D2C3D2B4F5396003242BD /* XCRemoteSwiftPackageReference "SPConfetti" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPConfetti.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -509,6 +521,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EE4D2BF22B4F1653003242BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		EE4D2C3E2B4F5396003242BD /* SPConfetti */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE4D2C3D2B4F5396003242BD /* XCRemoteSwiftPackageReference "SPConfetti" */;
+			productName = SPConfetti;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
