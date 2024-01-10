@@ -29,6 +29,7 @@
 		EE4D2C302B4F363F003242BD /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C2F2B4F363F003242BD /* ChecklistItem.swift */; };
 		EE4D2C322B4F3FB1003242BD /* PasswordSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */; };
 		EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */; };
+		EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C352B4F42F9003242BD /* SuccessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		EE4D2C2F2B4F363F003242BD /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSecureField.swift; sourceTree = "<group>"; };
 		EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
+		EE4D2C352B4F42F9003242BD /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,12 +124,8 @@
 			children = (
 				EE4D2B572B4EB566003242BD /* LoginView.swift */,
 				EE4D2B592B4EB57C003242BD /* SignUpView.swift */,
-				EE4D2C272B4F31F4003242BD /* LogoImage.swift */,
-				EE4D2C2B2B4F338C003242BD /* AuthActionButtonView.swift */,
-				EE4D2C2D2B4F34ED003242BD /* PasswordStrengthChecklist.swift */,
-				EE4D2C2F2B4F363F003242BD /* ChecklistItem.swift */,
-				EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */,
-				EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */,
+				EE4D2C352B4F42F9003242BD /* SuccessView.swift */,
+				EE4D2C372B4F4304003242BD /* Components */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -153,6 +151,19 @@
 			isa = PBXGroup;
 			children = (
 				EE4D2B652B4EBA1A003242BD /* PrimaryButtonComponentView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EE4D2C372B4F4304003242BD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EE4D2C272B4F31F4003242BD /* LogoImage.swift */,
+				EE4D2C2B2B4F338C003242BD /* AuthActionButtonView.swift */,
+				EE4D2C2D2B4F34ED003242BD /* PasswordStrengthChecklist.swift */,
+				EE4D2C2F2B4F363F003242BD /* ChecklistItem.swift */,
+				EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */,
+				EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -237,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */,
 				EE4D2C2C2B4F338C003242BD /* AuthActionButtonView.swift in Sources */,
 				EE4D2B5A2B4EB57C003242BD /* SignUpView.swift in Sources */,
 				EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */,

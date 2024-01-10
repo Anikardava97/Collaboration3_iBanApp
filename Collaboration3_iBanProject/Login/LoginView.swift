@@ -32,7 +32,7 @@ struct LoginView: View {
             Spacer()
         }
         .background(Color.customBackgroundColor)
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea()
     }
     
     private var accountCheckView: some View {
