@@ -23,6 +23,12 @@
 		EE4D2BF82B4F1653003242BD /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EE4D2BF72B4F1653003242BD /* FirebaseAnalyticsSwift */; };
 		EE4D2C002B4F1653003242BD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EE4D2BFF2B4F1653003242BD /* FirebaseAuth */; };
 		EE4D2C0C2B4F1653003242BD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EE4D2C0B2B4F1653003242BD /* FirebaseFirestore */; };
+		EE4D2C282B4F31F4003242BD /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C272B4F31F4003242BD /* LogoImage.swift */; };
+		EE4D2C2C2B4F338C003242BD /* AuthActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C2B2B4F338C003242BD /* AuthActionButtonView.swift */; };
+		EE4D2C2E2B4F34ED003242BD /* PasswordStrengthChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C2D2B4F34ED003242BD /* PasswordStrengthChecklist.swift */; };
+		EE4D2C302B4F363F003242BD /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C2F2B4F363F003242BD /* ChecklistItem.swift */; };
+		EE4D2C322B4F3FB1003242BD /* PasswordSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */; };
+		EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +45,12 @@
 		EE4D2B632B4EB8ED003242BD /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		EE4D2B652B4EBA1A003242BD /* PrimaryButtonComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonComponentView.swift; sourceTree = "<group>"; };
 		EE4D2B812B4F077D003242BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EE4D2C272B4F31F4003242BD /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
+		EE4D2C2B2B4F338C003242BD /* AuthActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActionButtonView.swift; sourceTree = "<group>"; };
+		EE4D2C2D2B4F34ED003242BD /* PasswordStrengthChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStrengthChecklist.swift; sourceTree = "<group>"; };
+		EE4D2C2F2B4F363F003242BD /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSecureField.swift; sourceTree = "<group>"; };
+		EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +122,12 @@
 			children = (
 				EE4D2B572B4EB566003242BD /* LoginView.swift */,
 				EE4D2B592B4EB57C003242BD /* SignUpView.swift */,
+				EE4D2C272B4F31F4003242BD /* LogoImage.swift */,
+				EE4D2C2B2B4F338C003242BD /* AuthActionButtonView.swift */,
+				EE4D2C2D2B4F34ED003242BD /* PasswordStrengthChecklist.swift */,
+				EE4D2C2F2B4F363F003242BD /* ChecklistItem.swift */,
+				EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */,
+				EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -219,9 +237,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE4D2C2C2B4F338C003242BD /* AuthActionButtonView.swift in Sources */,
 				EE4D2B5A2B4EB57C003242BD /* SignUpView.swift in Sources */,
+				EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */,
+				EE4D2C2E2B4F34ED003242BD /* PasswordStrengthChecklist.swift in Sources */,
 				EE4D2B612B4EB616003242BD /* Color+Extension.swift in Sources */,
+				EE4D2C282B4F31F4003242BD /* LogoImage.swift in Sources */,
 				EE4D2B5C2B4EB590003242BD /* IbanListView.swift in Sources */,
+				EE4D2C322B4F3FB1003242BD /* PasswordSecureField.swift in Sources */,
+				EE4D2C302B4F363F003242BD /* ChecklistItem.swift in Sources */,
 				EE4D2B662B4EBA1A003242BD /* PrimaryButtonComponentView.swift in Sources */,
 				EE4D2B642B4EB8ED003242BD /* Image+Extension.swift in Sources */,
 				EE4D2B5E2B4EB5B1003242BD /* ContentView.swift in Sources */,

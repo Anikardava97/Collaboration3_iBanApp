@@ -12,9 +12,7 @@ struct SignUpView: View {
     // MARK: - Properties
     @State private var email: String = ""
     @State private var password: String = ""
-    
     @State private var isSignUpEnabled: Bool = false
-
     @State private var isMinLengthMet: Bool = false
     @State private var isCapitalLetterMet: Bool = false
     @State private var isNumberMet: Bool = false
@@ -22,26 +20,12 @@ struct SignUpView: View {
     
     // MARK: - Body
     var body: some View {
-        VStack {
-            Spacer()
-            logoImage
-                        
-            EmailTextField(email: $email)
-            
-            PasswordSecureField(password: $password)
-            
-            PasswordStrengthChecklist(
-                isMinLengthMet: isMinLengthMet,
-                isCapitalLetterMet: isCapitalLetterMet,
-                isNumberMet: isNumberMet,
-                isUniqueCharacterMet: isUniqueCharacterMet
-            )
-            
-            Spacer()
-            SignUpButton(isEnabled: isSignUpEnabled, onTap: register)
+        content
+    }
     
-            Spacer()
-        }
+    // MARK: - Content
+    private var content: some View {
+        components
         .background(Color.customBackgroundColor)
         .edgesIgnoringSafeArea(.all)
         .onChange(of: password) { newValue in
@@ -54,15 +38,25 @@ struct SignUpView: View {
         }
     }
     
-    // MARK: - Components
-    private var logoImage: some View {
-        Image.logoWithTitle
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 150, height: 150)
-            .padding(.bottom, 60)
+    private var components: some View {
+        VStack(spacing: 20) {
+            Spacer()
+            LogoImage()
+            EmailTextField(email: $email)
+            PasswordSecureField(password: $password)
+            
+            PasswordStrengthChecklist(
+                isMinLengthMet: isMinLengthMet,
+                isCapitalLetterMet: isCapitalLetterMet,
+                isNumberMet: isNumberMet,
+                isUniqueCharacterMet: isUniqueCharacterMet
+            )
+            Spacer()
+            AuthActionButtonView(actionText: "Sign Up", isEnabled: isSignUpEnabled, onTap: register)
+            Spacer()
+        }
     }
-    
+
     // MARK: - Register
     private func register() {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -73,62 +67,7 @@ struct SignUpView: View {
     }
 }
 
-
-
-struct SignUpButton: View {
-    var isEnabled: Bool
-    var onTap: () -> Void
-    
-    var body: some View {
-        Button(action: {
-            onTap()
-        }) {
-            PrimaryButtonComponentView(text: "Sign Up")
-                .opacity(isEnabled ? 1.0 : 0.3)
-                .disabled(!isEnabled)
-        }
-    }
-}
-
-struct PasswordStrengthChecklist: View {
-    var isMinLengthMet: Bool
-    var isCapitalLetterMet: Bool
-    var isNumberMet: Bool
-    var isUniqueCharacterMet: Bool
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Your password should have:")
-                .foregroundColor(.white)
-            
-            ChecklistItem(title: "At least 8 characters", isMet: isMinLengthMet)
-            ChecklistItem(title: "At least one capital letter", isMet: isCapitalLetterMet)
-            ChecklistItem(title: "At least one number", isMet: isNumberMet)
-            ChecklistItem(title: "At least one unique character", isMet: isUniqueCharacterMet)
-        }
-        .padding(.top, 20)
-        .padding(.horizontal)
-        .frame(maxWidth: .infinity, alignment: .leading)
-
-    }
-}
-
-struct ChecklistItem: View {
-    var title: String
-    var isMet: Bool
-    
-    var body: some View {
-        HStack(spacing: 5) {
-            Image(systemName: isMet ? "checkmark" : "checkmark")
-                .foregroundColor(isMet ? .green : .gray)
-            Text(title)
-                .foregroundColor(.gray)
-                .font(.system(size: 14))
-        }
-    }
-}
-
-
+// MARK: - Preview
 #Preview {
     SignUpView()
 }
