@@ -80,6 +80,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A106944D2B508BE0009E5843 /* AddNewPersonIban */ = {
+			isa = PBXGroup;
+			children = (
+				A106944E2B508C2A009E5843 /* Scanner */,
+			);
+			path = AddNewPersonIban;
+			sourceTree = "<group>";
+		};
+		A106944E2B508C2A009E5843 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
 		EE4D2B2F2B4EB3A8003242BD = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +120,7 @@
 				EE4D2B492B4EB42D003242BD /* Onboarding */,
 				EE4D2B4F2B4EB48D003242BD /* SignUp */,
 				EE4D2B522B4EB4C2003242BD /* IBanList */,
+				A106944D2B508BE0009E5843 /* AddNewPersonIban */,
 				EE4D2B622B4EB787003242BD /* Components */,
 				EE4D2B5F2B4EB5E7003242BD /* Extensions */,
 				EE4D2B812B4F077D003242BD /* GoogleService-Info.plist */,
