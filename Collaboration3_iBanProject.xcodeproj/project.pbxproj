@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10694522B508D12009E5843 /* PersonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694512B508D12009E5843 /* PersonInfo.swift */; };
 		EE4D2B3C2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */; };
 		EE4D2B402B4EB3AA003242BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4D2B3F2B4EB3AA003242BD /* Assets.xcassets */; };
 		EE4D2B432B4EB3AA003242BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4D2B422B4EB3AA003242BD /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10694512B508D12009E5843 /* PersonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfo.swift; sourceTree = "<group>"; };
 		EE4D2B382B4EB3A8003242BD /* Collaboration3_iBanProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collaboration3_iBanProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaboration3_iBanProjectApp.swift; sourceTree = "<group>"; };
 		EE4D2B3F2B4EB3AA003242BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,16 +85,33 @@
 		A106944D2B508BE0009E5843 /* AddNewPersonIban */ = {
 			isa = PBXGroup;
 			children = (
-				A106944E2B508C2A009E5843 /* Scanner */,
+				A106944F2B508CD2009E5843 /* Models */,
+				A10694502B508CDE009E5843 /* AddNewPersonIbanPage */,
+				A106944E2B508C2A009E5843 /* ScannerPage */,
 			);
 			path = AddNewPersonIban;
 			sourceTree = "<group>";
 		};
-		A106944E2B508C2A009E5843 /* Scanner */ = {
+		A106944E2B508C2A009E5843 /* ScannerPage */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Scanner;
+			path = ScannerPage;
+			sourceTree = "<group>";
+		};
+		A106944F2B508CD2009E5843 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A10694512B508D12009E5843 /* PersonInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A10694502B508CDE009E5843 /* AddNewPersonIbanPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddNewPersonIbanPage;
 			sourceTree = "<group>";
 		};
 		EE4D2B2F2B4EB3A8003242BD = {
@@ -281,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */,
+				A10694522B508D12009E5843 /* PersonInfo.swift in Sources */,
 				EE4D2C2C2B4F338C003242BD /* AuthActionButtonView.swift in Sources */,
 				EE4D2B5A2B4EB57C003242BD /* SignUpView.swift in Sources */,
 				EEE57DB32B4FF99D00FDB168 /* AuthenticationManager.swift in Sources */,
