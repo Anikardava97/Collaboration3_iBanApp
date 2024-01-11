@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    var coordinator: UIKitNavigationController.Coordinator
+
     var body: some View {
         Text("Hello, World!")
     }
 }
 
-#Preview {
-    ContentView()
-}

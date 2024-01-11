@@ -6,20 +6,12 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct SignUpView: View {
     // MARK: - Properties
     var coordinator: UIKitNavigationController.Coordinator
+    @StateObject private var viewModel = SignUpViewModel()
 
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var isSignUpEnabled: Bool = false
-    @State private var isMinLengthMet: Bool = false
-    @State private var isCapitalLetterMet: Bool = false
-    @State private var isNumberMet: Bool = false
-    @State private var isUniqueCharacterMet: Bool = false
-    
     // MARK: - Body
     var body: some View {
         content
@@ -30,45 +22,30 @@ struct SignUpView: View {
         components
             .background(Color.customBackgroundColor)
             .edgesIgnoringSafeArea(.all)
-            .onChange(of: password) { newValue in
-                isMinLengthMet = newValue.count >= 8
-                isCapitalLetterMet = newValue.rangeOfCharacter(from: .uppercaseLetters) != nil
-                isNumberMet = newValue.rangeOfCharacter(from: .decimalDigits) != nil
-                isUniqueCharacterMet = newValue.rangeOfCharacter(from: CharacterSet(charactersIn: "@#$%^&*")) != nil
-                
-                isSignUpEnabled = isMinLengthMet && isCapitalLetterMet && isNumberMet && isUniqueCharacterMet
-            }
     }
     
     private var components: some View {
         VStack(spacing: 20) {
             Spacer()
             LogoImage()
-            EmailTextField(email: $email)
-            PasswordSecureField(password: $password)
-            
+            EmailTextField(email: $viewModel.email)
+            PasswordSecureField(password: $viewModel.password)
+                .onChange(of: viewModel.password) { newValue in
+                    viewModel.updatePasswordCriteria(password: newValue)
+                }
             PasswordStrengthChecklist(
-                isMinLengthMet: isMinLengthMet,
-                isCapitalLetterMet: isCapitalLetterMet,
-                isNumberMet: isNumberMet,
-                isUniqueCharacterMet: isUniqueCharacterMet
+                isMinLengthMet: viewModel.isMinLengthMet,
+                      isCapitalLetterMet: viewModel.isCapitalLetterMet,
+                      isNumberMet: viewModel.isNumberMet,
+                      isUniqueCharacterMet: viewModel.isUniqueCharacterMet
             )
             Spacer()
             AuthActionButtonView(actionText: "Sign Up",
-                                 isEnabled: isSignUpEnabled,
-                                 onTap: register,
+                                 isEnabled: viewModel.isSignUpEnabled,
+                                 onTap: viewModel.register,
                                  onNavigate: { coordinator.navigate(to: .successPage) }
             )
             Spacer()
-        }
-    }
-    
-    // MARK: - Register
-    private func register() {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
         }
     }
 }

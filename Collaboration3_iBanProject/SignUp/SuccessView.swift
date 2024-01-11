@@ -11,7 +11,6 @@ import SPConfetti
 struct SuccessView: View {
     // MARK: - Properties
     var coordinator: UIKitNavigationController.Coordinator
-
     @State private var isPresenting = false
     
     // MARK: - Body

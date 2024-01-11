@@ -12,6 +12,7 @@ enum NavigationPage {
     case loginPage
     case signupPage
     case successPage
+    case mainView
 }
 
 struct UIKitNavigationController: UIViewControllerRepresentable {
@@ -30,6 +31,8 @@ struct UIKitNavigationController: UIViewControllerRepresentable {
                 viewController = UIHostingController(rootView: SignUpView(coordinator: self))
             case .successPage:
                 viewController = UIHostingController(rootView: SuccessView(coordinator: self))
+            case .mainView:
+                viewController = UIHostingController(rootView: ContentView(coordinator: self))
             }
             navigationController?.pushViewController(viewController, animated: true)
         }

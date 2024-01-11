@@ -11,14 +11,18 @@ import Firebase
 struct LoginView: View {
     // MARK: - Properties
     var coordinator: UIKitNavigationController.Coordinator
-
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var isLoginEnabled: Bool = false
+    @StateObject private var viewModel = LoginViewModel()
     
     // MARK: - Body
     var body: some View {
         content
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(
+                    title: Text("Login Error"),
+                    message: Text(viewModel.alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
     }
     
     // MARK: - Content
@@ -26,13 +30,13 @@ struct LoginView: View {
         VStack(spacing: 20) {
             Spacer()
             LogoImage()
-            EmailTextField(email: $email)
-            PasswordSecureField(password: $password)
+            EmailTextField(email: $viewModel.email)
+            PasswordSecureField(password: $viewModel.password)
             accountCheckView
             Spacer()
             AuthActionButtonView(actionText: "Log In",
-                                 isEnabled: isLoginEnabled,
-                                 onTap: login)
+                                 isEnabled: viewModel.isButtonEnabled,
+                                 onTap: viewModel.login)
             Spacer()
         }
         .background(Color.customBackgroundColor)
@@ -52,15 +56,6 @@ struct LoginView: View {
             }
         }
         .padding(.top, 20)
-    }
-    
-    // MARK: - Methods
-    private func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
     }
 }
 

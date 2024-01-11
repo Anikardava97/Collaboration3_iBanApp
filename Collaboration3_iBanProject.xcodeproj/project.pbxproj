@@ -32,6 +32,9 @@
 		EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C352B4F42F9003242BD /* SuccessView.swift */; };
 		EE4D2C3F2B4F5396003242BD /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = EE4D2C3E2B4F5396003242BD /* SPConfetti */; };
 		EE4D2C412B4FC417003242BD /* UIKitNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */; };
+		EEE57DB32B4FF99D00FDB168 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE57DB22B4FF99D00FDB168 /* AuthenticationManager.swift */; };
+		EEE57DB52B500CF100FDB168 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE57DB42B500CF100FDB168 /* LoginViewModel.swift */; };
+		EEE57DB72B500DA300FDB168 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE57DB62B500DA300FDB168 /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 		EE4D2C352B4F42F9003242BD /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitNavigationController.swift; path = "New Group/UIKitNavigationController.swift"; sourceTree = "<group>"; };
+		EEE57DB22B4FF99D00FDB168 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		EEE57DB42B500CF100FDB168 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EEE57DB62B500DA300FDB168 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +133,10 @@
 		EE4D2B4F2B4EB48D003242BD /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				EEE57DB22B4FF99D00FDB168 /* AuthenticationManager.swift */,
+				EEE57DB42B500CF100FDB168 /* LoginViewModel.swift */,
 				EE4D2B572B4EB566003242BD /* LoginView.swift */,
+				EEE57DB62B500DA300FDB168 /* SignUpViewModel.swift */,
 				EE4D2B592B4EB57C003242BD /* SignUpView.swift */,
 				EE4D2C352B4F42F9003242BD /* SuccessView.swift */,
 				EE4D2C372B4F4304003242BD /* Components */,
@@ -258,13 +267,16 @@
 				EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */,
 				EE4D2C2C2B4F338C003242BD /* AuthActionButtonView.swift in Sources */,
 				EE4D2B5A2B4EB57C003242BD /* SignUpView.swift in Sources */,
+				EEE57DB32B4FF99D00FDB168 /* AuthenticationManager.swift in Sources */,
 				EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */,
 				EE4D2C2E2B4F34ED003242BD /* PasswordStrengthChecklist.swift in Sources */,
 				EE4D2B612B4EB616003242BD /* Color+Extension.swift in Sources */,
+				EEE57DB52B500CF100FDB168 /* LoginViewModel.swift in Sources */,
 				EE4D2C282B4F31F4003242BD /* LogoImage.swift in Sources */,
 				EE4D2B5C2B4EB590003242BD /* IbanListView.swift in Sources */,
 				EE4D2C322B4F3FB1003242BD /* PasswordSecureField.swift in Sources */,
 				EE4D2C302B4F363F003242BD /* ChecklistItem.swift in Sources */,
+				EEE57DB72B500DA300FDB168 /* SignUpViewModel.swift in Sources */,
 				EE4D2B662B4EBA1A003242BD /* PrimaryButtonComponentView.swift in Sources */,
 				EE4D2B642B4EB8ED003242BD /* Image+Extension.swift in Sources */,
 				EE4D2B5E2B4EB5B1003242BD /* ContentView.swift in Sources */,
