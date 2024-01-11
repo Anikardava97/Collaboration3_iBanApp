@@ -12,11 +12,13 @@ struct AuthActionButtonView: View {
     var actionText: String
     var isEnabled: Bool
     var onTap: () -> Void
+    var onNavigate: (() -> Void)?
     
     //MARK: - Body
     var body: some View {
         Button(action: {
             onTap()
+            onNavigate?()
         }) {
             PrimaryButtonComponentView(text: actionText)
                 .opacity(isEnabled ? 1.0 : 0.3)

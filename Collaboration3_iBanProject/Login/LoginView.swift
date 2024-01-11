@@ -10,6 +10,8 @@ import Firebase
 
 struct LoginView: View {
     // MARK: - Properties
+    var coordinator: UIKitNavigationController.Coordinator
+
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isLoginEnabled: Bool = false
@@ -28,7 +30,9 @@ struct LoginView: View {
             PasswordSecureField(password: $password)
             accountCheckView
             Spacer()
-            AuthActionButtonView(actionText: "Log In", isEnabled: isLoginEnabled, onTap: login)
+            AuthActionButtonView(actionText: "Log In",
+                                 isEnabled: isLoginEnabled,
+                                 onTap: login)
             Spacer()
         }
         .background(Color.customBackgroundColor)
@@ -41,7 +45,7 @@ struct LoginView: View {
                 .foregroundColor(.white)
             
             Button(action: {
-                // Action for signup button
+                coordinator.navigate(to: .signupPage)
             }) {
                 Text("Sign Up")
                     .foregroundColor(.customAccentColor)
@@ -61,5 +65,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    LoginView(coordinator: UIKitNavigationController.Coordinator())
 }

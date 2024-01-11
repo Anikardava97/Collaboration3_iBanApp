@@ -31,6 +31,7 @@
 		EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */; };
 		EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C352B4F42F9003242BD /* SuccessView.swift */; };
 		EE4D2C3F2B4F5396003242BD /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = EE4D2C3E2B4F5396003242BD /* SPConfetti */; };
+		EE4D2C412B4FC417003242BD /* UIKitNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		EE4D2C312B4F3FB1003242BD /* PasswordSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSecureField.swift; sourceTree = "<group>"; };
 		EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 		EE4D2C352B4F42F9003242BD /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitNavigationController.swift; path = "New Group/UIKitNavigationController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */,
 				EE4D2B5D2B4EB5B1003242BD /* ContentView.swift */,
+				EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */,
 				EE4D2B492B4EB42D003242BD /* Onboarding */,
 				EE4D2B4F2B4EB48D003242BD /* SignUp */,
 				EE4D2B522B4EB4C2003242BD /* IBanList */,
@@ -268,6 +271,7 @@
 				EE4D2B562B4EB555003242BD /* OnboardingView.swift in Sources */,
 				EE4D2B582B4EB566003242BD /* LoginView.swift in Sources */,
 				EE4D2B3C2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift in Sources */,
+				EE4D2C412B4FC417003242BD /* UIKitNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

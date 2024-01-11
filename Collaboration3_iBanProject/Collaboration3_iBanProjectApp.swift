@@ -15,7 +15,7 @@ struct Collaboration3_iBanProjectApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UIKitNavigationController()
                 .tint(Color.customAccentColor)
         }
     }

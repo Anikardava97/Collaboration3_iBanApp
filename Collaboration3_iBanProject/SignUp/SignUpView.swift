@@ -10,6 +10,8 @@ import Firebase
 
 struct SignUpView: View {
     // MARK: - Properties
+    var coordinator: UIKitNavigationController.Coordinator
+
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isSignUpEnabled: Bool = false
@@ -52,7 +54,11 @@ struct SignUpView: View {
                 isUniqueCharacterMet: isUniqueCharacterMet
             )
             Spacer()
-            AuthActionButtonView(actionText: "Sign Up", isEnabled: isSignUpEnabled, onTap: register)
+            AuthActionButtonView(actionText: "Sign Up",
+                                 isEnabled: isSignUpEnabled,
+                                 onTap: register,
+                                 onNavigate: { coordinator.navigate(to: .successPage) }
+            )
             Spacer()
         }
     }
@@ -69,5 +75,5 @@ struct SignUpView: View {
 
 // MARK: - Preview
 #Preview {
-    SignUpView()
+    SignUpView(coordinator: UIKitNavigationController.Coordinator())
 }
