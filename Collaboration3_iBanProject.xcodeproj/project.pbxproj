@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A10694522B508D12009E5843 /* PersonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694512B508D12009E5843 /* PersonInfo.swift */; };
+		A10694542B508E3A009E5843 /* AddNewPersonIbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694532B508E3A009E5843 /* AddNewPersonIbanView.swift */; };
+		A10694562B508EA7009E5843 /* AddNewPersonIbanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694552B508EA7009E5843 /* AddNewPersonIbanViewModel.swift */; };
 		EE4D2B3C2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */; };
 		EE4D2B402B4EB3AA003242BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4D2B3F2B4EB3AA003242BD /* Assets.xcassets */; };
 		EE4D2B432B4EB3AA003242BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4D2B422B4EB3AA003242BD /* Preview Assets.xcassets */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		A10694512B508D12009E5843 /* PersonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfo.swift; sourceTree = "<group>"; };
+		A10694532B508E3A009E5843 /* AddNewPersonIbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPersonIbanView.swift; sourceTree = "<group>"; };
+		A10694552B508EA7009E5843 /* AddNewPersonIbanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPersonIbanViewModel.swift; sourceTree = "<group>"; };
 		EE4D2B382B4EB3A8003242BD /* Collaboration3_iBanProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collaboration3_iBanProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaboration3_iBanProjectApp.swift; sourceTree = "<group>"; };
 		EE4D2B3F2B4EB3AA003242BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		A10694502B508CDE009E5843 /* AddNewPersonIbanPage */ = {
 			isa = PBXGroup;
 			children = (
+				A10694532B508E3A009E5843 /* AddNewPersonIbanView.swift */,
+				A10694552B508EA7009E5843 /* AddNewPersonIbanViewModel.swift */,
 			);
 			path = AddNewPersonIbanPage;
 			sourceTree = "<group>";
@@ -307,6 +313,8 @@
 				EE4D2C342B4F3FE0003242BD /* EmailTextField.swift in Sources */,
 				EE4D2C2E2B4F34ED003242BD /* PasswordStrengthChecklist.swift in Sources */,
 				EE4D2B612B4EB616003242BD /* Color+Extension.swift in Sources */,
+				A10694562B508EA7009E5843 /* AddNewPersonIbanViewModel.swift in Sources */,
+				A10694542B508E3A009E5843 /* AddNewPersonIbanView.swift in Sources */,
 				EEE57DB52B500CF100FDB168 /* LoginViewModel.swift in Sources */,
 				EE4D2C282B4F31F4003242BD /* LogoImage.swift in Sources */,
 				EE4D2B5C2B4EB590003242BD /* IbanListView.swift in Sources */,
