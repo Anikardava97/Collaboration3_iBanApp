@@ -11,6 +11,8 @@ import Firebase
 @MainActor
 final class SignUpViewModel: ObservableObject {
     // MARK: - Properties
+    var coordinator = UIKitNavigationController.Coordinator()
+    
     @Published var email = ""
     @Published var password = ""
     @Published var isSignUpEnabled = false
@@ -18,21 +20,25 @@ final class SignUpViewModel: ObservableObject {
     @Published var isCapitalLetterMet = false
     @Published var isNumberMet = false
     @Published var isUniqueCharacterMet = false
+    @Published var showAlert = false
+    @Published var alertMessage = ""
+    
+    // MARK: - Init
+    init(coordinator: UIKitNavigationController.Coordinator) {
+        self.coordinator = coordinator
+    }
     
     // MARK: - Methods
     func register() async {
-        guard !email.isEmpty, !password.isEmpty else {
-            print("No email or password found")
-            return
-        }
+        guard !email.isEmpty, !password.isEmpty else { return }
         Task {
             do {
-                let returnedUserData = try await
+                _ = try await
                 AuthenticationManager.shared.createUser(email: email, password: password)
-                print("success")
-                print(returnedUserData)
+                navigateToMainPage()
             } catch {
-                print("error: \(error)")
+                showAlert = true
+                alertMessage = "Registration failed. Please try again later."
             }
         }
     }
@@ -43,5 +49,9 @@ final class SignUpViewModel: ObservableObject {
         isNumberMet = password.rangeOfCharacter(from: .decimalDigits) != nil
         isUniqueCharacterMet = password.rangeOfCharacter(from: CharacterSet(charactersIn: "@#$%^&*")) != nil
         isSignUpEnabled = isMinLengthMet && isCapitalLetterMet && isNumberMet && isUniqueCharacterMet
+    }
+    
+    private func navigateToMainPage() {
+        coordinator.navigate(to: .successPage)
     }
 }

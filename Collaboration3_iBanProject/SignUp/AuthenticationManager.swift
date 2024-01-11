@@ -21,10 +21,11 @@ struct AuthorizationDataResultModel {
 }
 
 final class AuthenticationManager {
-    
+    //MARK: - Properties
     static let shared = AuthenticationManager()
     private init() { }
     
+    //MARK: - Methods
     func createUser(email: String, password: String) async throws -> AuthorizationDataResultModel {
         let authorizationDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
         return AuthorizationDataResultModel(user: authorizationDataResult.user)

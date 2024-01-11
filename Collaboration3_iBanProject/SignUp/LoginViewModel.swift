@@ -11,36 +11,34 @@ import Firebase
 @MainActor
 final class LoginViewModel: ObservableObject {
     // MARK: - Properties
-   // var coordinator: UIKitNavigationController.Coordinator
+    var coordinator = UIKitNavigationController.Coordinator()
     
     @Published var email = ""
     @Published var password = ""
-    @Published var isButtonEnabled = false
     @Published var showAlert = false
     @Published var alertMessage = ""
     
+    // MARK: - Init
+    init(coordinator: UIKitNavigationController.Coordinator) {
+        self.coordinator = coordinator
+    }
+    
     // MARK: - Methods
     func login() async {
-        guard !email.isEmpty, !password.isEmpty else {
-            print("No email or password found")
-            return
-        }
+        guard !email.isEmpty, !password.isEmpty else { return }
         Task {
             do {
-                let returnedUserData = try await AuthenticationManager.shared.loginUser(email: email, password: password)
-                print("Login success")
-                print(returnedUserData)
-                    //navigateToMainPage()
+                _ = try await AuthenticationManager.shared.loginUser(email: email, password: password)
+                navigateToMainPage()
             } catch {
-                print("Login error: \(error)")
                 showAlert = true
                 alertMessage = "Login failed. Please check your email and password."
             }
         }
     }
     
-//    func navigateToMainPage() {
-//        coordinator.navigate(to: .mainView)
-//    }
+    private func navigateToMainPage() {
+        coordinator.navigate(to: .mainView)
+    }
 }
 

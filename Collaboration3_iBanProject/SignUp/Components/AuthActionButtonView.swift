@@ -10,7 +10,7 @@ import SwiftUI
 struct AuthActionButtonView: View {
     //MARK: - Properties
     var actionText: String
-    var isEnabled: Bool
+    var isEnabled: Bool?
     var onTap: () async -> Void
     var onNavigate: (() -> Void)?
     
@@ -23,8 +23,8 @@ struct AuthActionButtonView: View {
             }
         }) {
             PrimaryButtonComponentView(text: actionText)
-                .opacity(isEnabled ? 1.0 : 0.3)
-                .disabled(!isEnabled)
+                .opacity(isEnabled ?? true ? 1.0 : 0.3)
+                .disabled(isEnabled == false)
         }
     }
 }

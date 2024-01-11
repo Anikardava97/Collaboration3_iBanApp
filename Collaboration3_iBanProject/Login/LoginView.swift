@@ -11,7 +11,13 @@ import Firebase
 struct LoginView: View {
     // MARK: - Properties
     var coordinator: UIKitNavigationController.Coordinator
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var viewModel: LoginViewModel
+    
+    // MARK: - Init
+    init(coordinator: UIKitNavigationController.Coordinator) {
+        self.coordinator = coordinator
+        self._viewModel = StateObject(wrappedValue: LoginViewModel(coordinator: coordinator))
+    }
     
     // MARK: - Body
     var body: some View {
@@ -34,13 +40,12 @@ struct LoginView: View {
             PasswordSecureField(password: $viewModel.password)
             accountCheckView
             Spacer()
-            AuthActionButtonView(actionText: "Log In",
-                                 isEnabled: viewModel.isButtonEnabled,
-                                 onTap: viewModel.login)
+            AuthActionButtonView(actionText: "Log In", onTap: viewModel.login)
             Spacer()
         }
         .background(Color.customBackgroundColor)
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
     }
     
     private var accountCheckView: some View {
