@@ -109,4 +109,8 @@ final class AddNewPersonIbanViewModel: ObservableObject {
         #warning("this data should be send back to previous page where it will be added to firebase")
         mockListArray.append(PersonInfo(fullName: personFullName, ibanInfo: ibanInfos))
     }
+    
+    func addPerson() {
+            AuthenticationManager.shared.addPerson(person: PersonInfo(fullName: personFullName, ibanInfo: ibanInfos))
+        }
 }

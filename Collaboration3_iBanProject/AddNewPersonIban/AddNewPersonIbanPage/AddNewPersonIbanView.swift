@@ -111,17 +111,19 @@ struct AddNewPersonIbanView: View {
         }
     }
     
-    private var addPersonAndIbanButton: some View {
-        Button(action: {
-            viewModel.addPersonToList()
-            #warning("send new person info back to previous page or add directly to firebase and go back to list page")
-            dismiss()
-        }, label: {
-            PrimaryButtonComponentView(text: "Add Person and iBan")
-        })
-        .padding()
-        .foregroundStyle(.black)
-    }
+    private var AddPersonAndIbanButton: some View {
+           Button(action: {
+               viewModel.addPersonToList()
+               viewModel.addPerson()
+               #warning("send new person info back to previous page and go back to list page")
+           }, label: {
+               PrimaryButtonComponentView(text: "Add Person and iBan")
+           })
+           .disabled(viewModel.personFullName.isEmpty)
+           .opacity(viewModel.personFullName.isEmpty ? 0.3 : 1.0)
+           .padding()
+           .foregroundStyle(.black)
+       }
 }
 
 #Preview {

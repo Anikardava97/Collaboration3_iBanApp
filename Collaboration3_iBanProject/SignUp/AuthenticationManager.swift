@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 struct AuthorizationDataResultModel {
     let uid: String
@@ -34,6 +35,34 @@ final class AuthenticationManager {
     func loginUser(email: String, password: String) async throws -> AuthorizationDataResultModel {
         let authorizationDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
         return AuthorizationDataResultModel(user: authorizationDataResult.user)
+    }
+    
+    func addPerson(person: PersonInfo) {
+        let dataBase = Firestore.firestore()
+        let reference = dataBase.collection("Persons").document(person.fullName)
+        
+        var ibanInfoArray = [[String: Any]]()
+        for ibanInfo in person.ibanInfo {
+            let ibanInfoDict: [String: Any] = [
+                "id": ibanInfo.id.uuidString,
+                "bankName": ibanInfo.bankName,
+                "iban": ibanInfo.iban
+            ]
+            ibanInfoArray.append(ibanInfoDict)
+        }
+        
+        let data: [String: Any] = [
+            "fullName": person.fullName,
+            "ibanInfo": ibanInfoArray
+        ]
+        
+        reference.setData(data) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+            } else {
+                print("Document added successfully")
+            }
+        }
     }
 }
 
