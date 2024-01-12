@@ -44,14 +44,6 @@ final class AddNewPersonIbanViewModel: ObservableObject {
     var recognizedDataType: DataScannerViewController.RecognizedDataType {
         scanType == .text ? .text(textContentType: textContentType) : .barcode()
     }
-
-    var headerText: String {
-        if recognizedItems.isEmpty {
-            return "Scanning \(scanType.rawValue)"
-        } else {
-            return "Recognized \(recognizedItems.count) item(s)"
-        }
-    }
     
     var dataScannerViewId: Int {
         var hasher = Hasher()

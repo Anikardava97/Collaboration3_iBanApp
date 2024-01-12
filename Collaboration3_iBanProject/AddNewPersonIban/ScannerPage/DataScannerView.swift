@@ -7,10 +7,12 @@
 
 import SwiftUI
 import VisionKit
-
+ 
 struct DataScannerView: View {
     //MARK: - Properties
     @ObservedObject var viewModel: AddNewPersonIbanViewModel
+    @State var isAddIBanButtonEnabled = false
+ 
     var coordinator: UIKitNavigationController.Coordinator
     
     init(coordinator: UIKitNavigationController.Coordinator) {
@@ -44,79 +46,75 @@ struct DataScannerView: View {
     
     //MARK: - Content
     private var mainView: some View {
-        VStack {
+        VStack(spacing: 0) {
             DataScannerViewControllerRepresentable(recognizedItems: $viewModel.recognizedItems,
                                                    recognizedDataType: viewModel.recognizedDataType,
                                                    recognisesMultipleItems: viewModel.recognisesMultipleItems)
             .background(Color.gray.opacity(0.3))
             .ignoresSafeArea()
             .id(viewModel.dataScannerViewId)
-            .onChange(of: viewModel.scanType) { _ in viewModel.recognizedItems = [] }
+            .onChange(of: viewModel.scanType) { _ in viewModel.recognizedItems = [] } // _ in მოაშორე თუ შენთანაც აყვითლებს
             .onChange(of: viewModel.textContentType) { _ in viewModel.recognizedItems = [] }
             .onChange(of: viewModel.recognisesMultipleItems) { _ in viewModel.recognizedItems = [] }
             
             bottomContainerView
-                .frame(height: 300)
+                .foregroundStyle(.white)
+                .frame(height: 200)
+                .background(Color.customBackgroundColor)
         }
-    }
-    
-    private var headerView: some View {
-        VStack {
-            Picker("Scan Type", selection: $viewModel.scanType) {
-                Text("Scan iBAN").tag(ScanType.text)
-            }.pickerStyle(.segmented)
-            
-            if viewModel.scanType == .text {
-                Picker("Text content type", selection: $viewModel.textContentType) {
-                    Text(viewModel.headerText).padding(.top)
-                }
-                .pickerStyle(.segmented)
-            }
-        }
-        .padding(.horizontal)
     }
     
     private var bottomContainerView: some View {
-        
-        VStack {
-            
-            headerView
-            
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 10){
-                    ForEach(viewModel.recognizedItems) { item in
-                        switch item {
-                        case .text(let text):
-                            if text.transcript.count == 22 {
-                                if text.transcript.prefix(2) == "GE" {
-                                    Button {
-                                        let pasteboard = UIPasteboard.general
-                                        pasteboard.string = text.transcript
-                                    } label: {
-                                        Image(systemName: "doc.on.doc.fill")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 20, height: 20)
-                                            .foregroundColor(Color.blue)
-                                        
-                                        Text("Copy iBAN")
-                                    }
-                                    .padding(.leading, 8)
-                                    
-                                    Text(text.transcript)
-                                }
-                            }
+            VStack {
+                Text("Scanning iBAN...")
+                    .font(.system(size: 18))
+                
+                ScrollView {
+                    LazyVStack(alignment: .leading) {
+                        ForEach(viewModel.recognizedItems) { item in
+                            switch item {
+                            case .text(let text):
+                                if text.transcript.count < 33 {
+                                    VStack {
+                                        HStack {
+                                            Text(text.transcript)
                                             
-                        case .barcode(_):
-                            Text("")
-                        @unknown default:
-                            Text("unknown")
+                                            Spacer()
+                                            
+                                            Button {
+                                                let pasteboard = UIPasteboard.general
+                                                pasteboard.string = text.transcript
+                                            } label: {
+                                                Image(systemName: "doc.on.doc.fill")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 20, height: 20)
+                                                    .foregroundColor(Color.customAccentColor)
+                                                
+                                                Text("Copy iBAN")
+                                            }
+                                        }
+                                        .padding(.horizontal, 16)
+                                        
+                                        Button {
+                                            
+                                        } label: {
+                                            PrimaryButtonComponentView(text: "Save iBAN")
+                                        }
+                                        .padding(.top, 16)
+                                    }
+                                }
+                                
+                            case .barcode(_):
+                                Text("")
+                            @unknown default:
+                                Text("unknown")
+                            }
                         }
                     }
+                    .padding(16)
                 }
-                .padding(16)
             }
+            .padding(.top, 32)
         }
-        .padding(.top, 32)
     }
-}
