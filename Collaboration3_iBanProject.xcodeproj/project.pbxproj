@@ -11,6 +11,7 @@
 		A10694542B508E3A009E5843 /* AddNewPersonIbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694532B508E3A009E5843 /* AddNewPersonIbanView.swift */; };
 		A10694562B508EA7009E5843 /* AddNewPersonIbanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694552B508EA7009E5843 /* AddNewPersonIbanViewModel.swift */; };
 		A10694582B5168FC009E5843 /* BankAndIbanComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694572B5168FC009E5843 /* BankAndIbanComponentView.swift */; };
+		A106945A2B516C5F009E5843 /* DataScannerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10694592B516C5F009E5843 /* DataScannerViewControllerRepresentable.swift */; };
 		EE4D2B3C2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */; };
 		EE4D2B402B4EB3AA003242BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4D2B3F2B4EB3AA003242BD /* Assets.xcassets */; };
 		EE4D2B432B4EB3AA003242BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE4D2B422B4EB3AA003242BD /* Preview Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		A10694532B508E3A009E5843 /* AddNewPersonIbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPersonIbanView.swift; sourceTree = "<group>"; };
 		A10694552B508EA7009E5843 /* AddNewPersonIbanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPersonIbanViewModel.swift; sourceTree = "<group>"; };
 		A10694572B5168FC009E5843 /* BankAndIbanComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAndIbanComponentView.swift; sourceTree = "<group>"; };
+		A10694592B516C5F009E5843 /* DataScannerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		EE4D2B382B4EB3A8003242BD /* Collaboration3_iBanProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collaboration3_iBanProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collaboration3_iBanProjectApp.swift; sourceTree = "<group>"; };
 		EE4D2B3F2B4EB3AA003242BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		A106944E2B508C2A009E5843 /* ScannerPage */ = {
 			isa = PBXGroup;
 			children = (
+				A10694592B516C5F009E5843 /* DataScannerViewControllerRepresentable.swift */,
 			);
 			path = ScannerPage;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A106945A2B516C5F009E5843 /* DataScannerViewControllerRepresentable.swift in Sources */,
 				EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */,
 				A10694522B508D12009E5843 /* PersonInfo.swift in Sources */,
 				EE4D2C2C2B4F338C003242BD /* AuthActionButtonView.swift in Sources */,
