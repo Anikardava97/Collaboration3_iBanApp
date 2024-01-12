@@ -132,7 +132,7 @@ struct BankAndIbanComponentView: View {
     private var scanIbanButton: some View {
         
         Button(action: {
-            coordinator.navigate(to: .dataScannerView)
+            coordinator.navigate(to: .dataScannerView(ibanInfo: $ibanInfo.iban))
         }, label: {
             RoundedRectangle(cornerRadius: 12)
                 .frame(maxWidth: .infinity, minHeight: 50)

@@ -11,6 +11,7 @@ struct AddNewPersonIbanView: View {
     
     // MARK: - Properties
     
+    @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: AddNewPersonIbanViewModel
     var coordinator: UIKitNavigationController.Coordinator
     
@@ -113,7 +114,8 @@ struct AddNewPersonIbanView: View {
     private var addPersonAndIbanButton: some View {
         Button(action: {
             viewModel.addPersonToList()
-            #warning("send new person info back to previous page and go back to list page")
+            #warning("send new person info back to previous page or add directly to firebase and go back to list page")
+            dismiss()
         }, label: {
             PrimaryButtonComponentView(text: "Add Person and iBan")
         })
