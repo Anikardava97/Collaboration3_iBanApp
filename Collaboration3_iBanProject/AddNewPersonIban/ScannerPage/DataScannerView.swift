@@ -10,11 +10,12 @@ import VisionKit
 
 struct DataScannerView: View {
     //MARK: - Properties
-    @EnvironmentObject var viewModel: AddNewPersonIbanViewModel
+    @ObservedObject var viewModel: AddNewPersonIbanViewModel
     var coordinator: UIKitNavigationController.Coordinator
     
     init(coordinator: UIKitNavigationController.Coordinator) {
         self.coordinator = coordinator
+        self._viewModel = ObservedObject(wrappedValue: AddNewPersonIbanViewModel())
     }
     
     //MARK: - Body
@@ -43,22 +44,20 @@ struct DataScannerView: View {
     
     //MARK: - Content
     private var mainView: some View {
-        DataScannerViewControllerRepresentable(recognizedItems: $viewModel.recognizedItems,
-                                               recognizedDataType: viewModel.recognizedDataType,
-                                               recognisesMultipleItems: viewModel.recognisesMultipleItems)
-        .background(Color.gray.opacity(0.3))
-        .ignoresSafeArea()
-        .id(viewModel.dataScannerViewId)
-        .sheet(isPresented: .constant(true)) {
+        VStack {
+            DataScannerViewControllerRepresentable(recognizedItems: $viewModel.recognizedItems,
+                                                   recognizedDataType: viewModel.recognizedDataType,
+                                                   recognisesMultipleItems: viewModel.recognisesMultipleItems)
+            .background(Color.gray.opacity(0.3))
+            .ignoresSafeArea()
+            .id(viewModel.dataScannerViewId)
+            .onChange(of: viewModel.scanType) { _ in viewModel.recognizedItems = [] }
+            .onChange(of: viewModel.textContentType) { _ in viewModel.recognizedItems = [] }
+            .onChange(of: viewModel.recognisesMultipleItems) { _ in viewModel.recognizedItems = [] }
+            
             bottomContainerView
-                .background(.ultraThinMaterial)
-                .presentationDetents([.medium, .fraction(0.3)])
-                .presentationDragIndicator(.visible)
-                .interactiveDismissDisabled()
+                .frame(height: 300)
         }
-        .onChange(of: viewModel.scanType) { _ in viewModel.recognizedItems = [] } // _ in მოაშორე თუ შენთანაც აყვითლებს
-        .onChange(of: viewModel.textContentType) { _ in viewModel.recognizedItems = [] }
-        .onChange(of: viewModel.recognisesMultipleItems) { _ in viewModel.recognizedItems = [] }
     }
     
     private var headerView: some View {
@@ -78,7 +77,9 @@ struct DataScannerView: View {
     }
     
     private var bottomContainerView: some View {
+        
         VStack {
+            
             headerView
             
             ScrollView {
@@ -86,22 +87,26 @@ struct DataScannerView: View {
                     ForEach(viewModel.recognizedItems) { item in
                         switch item {
                         case .text(let text):
-                            Button {
-                                let pasteboard = UIPasteboard.general
-                                pasteboard.string = text.transcript
-                            } label: {
-                                Image(systemName: "doc.on.doc.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(Color.blue)
-                                
-                                Text("Copy iBAN")
+                            if text.transcript.count == 22 {
+                                if text.transcript.prefix(2) == "GE" {
+                                    Button {
+                                        let pasteboard = UIPasteboard.general
+                                        pasteboard.string = text.transcript
+                                    } label: {
+                                        Image(systemName: "doc.on.doc.fill")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 20, height: 20)
+                                            .foregroundColor(Color.blue)
+                                        
+                                        Text("Copy iBAN")
+                                    }
+                                    .padding(.leading, 8)
+                                    
+                                    Text(text.transcript)
+                                }
                             }
-                            .padding(.leading, 8)
-                            
-                            Text(text.transcript)
-                            
+                                            
                         case .barcode(_):
                             Text("")
                         @unknown default:

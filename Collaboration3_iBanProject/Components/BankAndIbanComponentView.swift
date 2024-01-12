@@ -21,23 +21,24 @@ struct BankAndIbanComponentView: View {
         
         VStack(spacing: 16, content: {
             
-            DeleteComponentButton
+            if viewModel.ibanInfos.count > 1 {
+                deleteComponentButton
+            }
             
-            BankNameView
+            bankNameView
             
-            IbanTextView
+            ibanTextView
             
-            ScanIbanButton
+            scanIbanButton
         })
         .padding()
         .overlay(content: {
             
             RoundedRectangle(cornerRadius: 8)
                 .stroke(lineWidth: 1)
-                .foregroundStyle(Color(red: 101/255, green: 82/255, blue: 254/255))
+                .foregroundStyle(Color.customAccentColor)
         })
         .padding()
-        .preferredColorScheme(.dark)
         .onChange(of: ibanInfo.bankName) { _ in
             viewModel.changeIbanBankName(ibanInfo: ibanInfo)
         }
@@ -48,7 +49,7 @@ struct BankAndIbanComponentView: View {
     
     // MARK: - Views
     
-    private var DeleteComponentButton: some View {
+    private var deleteComponentButton: some View {
         
         HStack(spacing: 8, content: {
             
@@ -63,69 +64,95 @@ struct BankAndIbanComponentView: View {
                     .foregroundStyle(.red)
                     .overlay(content: {
                         
-                        Image(systemName: "trash.fill")
+                        Image(systemName: "minus")
                             .resizable()
                             .foregroundStyle(.white)
-                            .frame(width: 12, height: 15)
+                            .frame(width: 12, height: 2)
                     })
             })
         })
     }
     
-    private var BankNameView: some View {
+    private var bankNameView: some View {
         
         VStack(spacing: 8, content: {
             
             Text("Bank Name")
+                .foregroundStyle(.white)
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField("Enter Bank Name", text: $ibanInfo.bankName)
-                .textFieldStyle(.roundedBorder)
+            ZStack(alignment: .leading) {
+                if ibanInfo.bankName.isEmpty {
+                    Text("Enter Bank Name")
+                        .font(.system(size: 14))
+                        .foregroundStyle(.white.opacity(0.6))
+                }
+                TextField("", text: $ibanInfo.bankName)
+            }
+            .foregroundStyle(.white)
+            .tint(.white)
+            .padding(.horizontal, 16)
+            .frame(height: 48)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.customAccentColor.opacity(0.5), lineWidth: 1))
+            .background(Color.customTextFieldColor)
         })
     }
     
-    private var IbanTextView: some View {
+    private var ibanTextView: some View {
         
         VStack(spacing: 8, content: {
             
             Text("iBan")
+                .foregroundStyle(.white)
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            
-            TextField("Enter iBan", text: $ibanInfo.iban)
-                .textFieldStyle(.roundedBorder)
+
+            ZStack(alignment: .leading) {
+                if ibanInfo.iban.isEmpty {
+                    Text("Enter iBan")
+                        .font(.system(size: 14))
+                        .foregroundStyle(.white.opacity(0.6))
+                }
+                TextField("", text: $ibanInfo.iban)
+            }
+            .foregroundStyle(.white)
+            .tint(.white)
+            .padding(.horizontal, 16)
+            .frame(height: 48)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.customAccentColor.opacity(0.5), lineWidth: 1))
+            .background(Color.customTextFieldColor)
         })
     }
     
-    private var ScanIbanButton: some View {
+    private var scanIbanButton: some View {
         
         Button(action: {
             coordinator.navigate(to: .dataScannerView)
         }, label: {
-            NavigationLink(value: "navigateToScanner") {
-                RoundedRectangle(cornerRadius: 12)
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .foregroundStyle(.white)
-                    .background(.black)
-                    .overlay(content: {
-                        HStack {
-                            
-                            Image(systemName: "qrcode.viewfinder")
-                                .resizable()
-                                .frame(width: 24, height: 24)
-                                .foregroundStyle(.black)
-                            
-                            Text("Scan iBan")
-                                .font(.system(size: 16))
-                        }
-                    })
-            }
+            RoundedRectangle(cornerRadius: 12)
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .foregroundStyle(.white)
+                .background(.black)
+                .overlay(content: {
+                    HStack {
+                        
+                        Image(systemName: "qrcode.viewfinder")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundStyle(.black)
+                        
+                        Text("Scan iBan")
+                            .font(.system(size: 16))
+                    }
+                })
+            
         })
         .foregroundStyle(.black)
-        .navigationDestination(for: String.self) { destination in
-            
-        }
     }
 }
 

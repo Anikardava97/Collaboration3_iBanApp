@@ -23,42 +23,63 @@ struct AddNewPersonIbanView: View {
     
     var body: some View {
         
-        PageHeaderView
-        
-        PersonNameView
-        
-        IbansHeaderView
-        
-        AddIbansScrollView
-        
-        AddPersonAndIbanButton
+        VStack {
+            
+            pageHeaderView
+            
+            personNameView
+            
+            ibansHeaderView
+            
+            addIbansScrollView
+            
+            addPersonAndIbanButton
+        }
+        .background(Color.customBackgroundColor)
     }
     
     // MARK: - Views
     
-    private var PageHeaderView: some View {
+    private var pageHeaderView: some View {
         Text("Add New Person and iBan")
+            .foregroundStyle(.white)
             .font(.system(size: 16))
             .bold()
     }
     
-    private var PersonNameView: some View {
+    private var personNameView: some View {
         VStack(spacing: 8, content: {
             
             Text("Full Name")
+                .foregroundStyle(.white)
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField("Enter Full Name", text: $viewModel.personFullName)
-                .textFieldStyle(.roundedBorder)
+            ZStack(alignment: .leading) {
+                if viewModel.personFullName.isEmpty {
+                    Text("Enter full name")
+                        .font(.system(size: 14))
+                        .foregroundStyle(.white.opacity(0.6))
+                }
+                TextField("", text: $viewModel.personFullName)
+            }
+            .foregroundStyle(.white)
+            .tint(.white)
+            .padding(.horizontal, 16)
+            .frame(height: 48)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.customAccentColor.opacity(0.5), lineWidth: 1))
+            .background(Color.customTextFieldColor)
         })
         .padding()
     }
     
-    private var IbansHeaderView: some View {
+    private var ibansHeaderView: some View {
         HStack {
             
             Text("iBans")
+                .foregroundStyle(.white)
                 .font(.system(size: 14))
             
             Spacer()
@@ -78,10 +99,10 @@ struct AddNewPersonIbanView: View {
                     })
             })
         }
-        .padding()
+        .padding(.horizontal)
     }
     
-    private var AddIbansScrollView: some View {
+    private var addIbansScrollView: some View {
         ScrollView {
             ForEach(viewModel.ibanInfos) { personIbanInfo in
                 BankAndIbanComponentView(viewModel: viewModel, ibanInfo: personIbanInfo, coordinator: coordinator)
@@ -89,21 +110,12 @@ struct AddNewPersonIbanView: View {
         }
     }
     
-    private var AddPersonAndIbanButton: some View {
+    private var addPersonAndIbanButton: some View {
         Button(action: {
             viewModel.addPersonToList()
+            #warning("send new person info back to previous page and go back to list page")
         }, label: {
-            
-            RoundedRectangle(cornerRadius: 12)
-                .frame(maxWidth: .infinity, maxHeight: 50)
-                .foregroundStyle(Color(red: 101/255, green: 82/255, blue: 254/255))
-                .background(.black)
-                .overlay(content: {
-                    Text("Add Person and iBan")
-                        .font(.system(size: 16))
-                        .bold()
-                })
-            
+            PrimaryButtonComponentView(text: "Add Person and iBan")
         })
         .padding()
         .foregroundStyle(.black)

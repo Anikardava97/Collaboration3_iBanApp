@@ -108,10 +108,13 @@ final class AddNewPersonIbanViewModel: ObservableObject {
     func deleteIban(ibanInfo: IbanInfo) {
         guard let index = ibanInfos.firstIndex(where: { $0.id == ibanInfo.id }) else { return }
 
-        ibanInfos.remove(at: index)
+        if ibanInfos.count > 1 {
+            ibanInfos.remove(at: index)
+        }
     }
     
     func addPersonToList() {
+        #warning("this data should be send back to previous page where it will be added to firebase")
         mockListArray.append(PersonInfo(fullName: personFullName, ibanInfo: ibanInfos))
     }
 }
