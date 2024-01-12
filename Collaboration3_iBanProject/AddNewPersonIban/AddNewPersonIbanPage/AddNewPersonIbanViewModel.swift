@@ -5,8 +5,24 @@
 //  Created by Luka Gazdeliani on 12.01.24.
 //
 
+import ARKit
 import Foundation
+import SwiftUI
+import VisionKit
 
+enum ScanType: String {
+    case text
+}
+
+enum DataScannerAccessStatusType {
+    case notDetermined
+    case cameraAccessNotGranted
+    case cameraNotAvailable
+    case scannerAvailable
+    case scannerNotAvailable
+}
+
+@MainActor
 final class AddNewPersonIbanViewModel: ObservableObject {
     
     // MARK: - Properties
@@ -14,6 +30,65 @@ final class AddNewPersonIbanViewModel: ObservableObject {
     @Published var mockListArray: [PersonInfo] = []
     @Published var personFullName: String = ""
     @Published var ibanInfos: [IbanInfo] = [IbanInfo(bankName: "", iban: "")]
+    @Published var dataScannerAccessStatus: DataScannerAccessStatusType = .notDetermined
+    @Published var recognizedItems: [RecognizedItem] = []
+    @Published var scanType: ScanType = .text
+    @Published var textContentType: DataScannerViewController.TextContentType?
+    @Published var recognisesMultipleItems = false
+
+    
+    private var isScannerAvailable: Bool {
+        DataScannerViewController.isAvailable && DataScannerViewController.isSupported
+    }
+    
+    var recognizedDataType: DataScannerViewController.RecognizedDataType {
+        scanType == .text ? .text(textContentType: textContentType) : .barcode()
+    }
+
+    var headerText: String {
+        if recognizedItems.isEmpty {
+            return "Scanning \(scanType.rawValue)"
+        } else {
+            return "Recognized \(recognizedItems.count) item(s)"
+        }
+    }
+    
+    var dataScannerViewId: Int {
+        var hasher = Hasher()
+        hasher.combine(scanType)
+        hasher.combine(recognisesMultipleItems)
+        if let textContentType {
+            hasher.combine(textContentType)
+        }
+        return hasher.finalize()
+    }
+    
+    // MARK: - Methods
+    func requestDataScannerAccessStatus() async {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            dataScannerAccessStatus = .cameraNotAvailable
+            return
+        }
+        
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            
+        case .authorized:
+            dataScannerAccessStatus = isScannerAvailable ? .scannerAvailable : .scannerNotAvailable
+        case .restricted, .denied:
+            dataScannerAccessStatus = .cameraAccessNotGranted
+        case .notDetermined:
+            let granted = await AVCaptureDevice.requestAccess(for: .video)
+            if granted {
+                dataScannerAccessStatus = isScannerAvailable ? .scannerAvailable : .scannerNotAvailable
+            } else {
+                dataScannerAccessStatus = .cameraAccessNotGranted
+            }
+            
+        default: break
+            
+        }
+    }
+    
     
     // MARK: - Methods
     func changeIbanBankName(ibanInfo: IbanInfo) {
