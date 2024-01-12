@@ -11,7 +11,13 @@ struct AddNewPersonIbanView: View {
     
     // MARK: - Properties
     
-    @ObservedObject var viewModel: AddNewPersonIbanViewModel
+    @StateObject var viewModel: AddNewPersonIbanViewModel
+    var coordinator: UIKitNavigationController.Coordinator
+    
+    init(coordinator: UIKitNavigationController.Coordinator) {
+        self._viewModel = StateObject(wrappedValue: AddNewPersonIbanViewModel())
+        self.coordinator = coordinator
+    }
     
     // MARK: - Body
     
@@ -78,7 +84,7 @@ struct AddNewPersonIbanView: View {
     private var AddIbansScrollView: some View {
         ScrollView {
             ForEach(viewModel.ibanInfos) { personIbanInfo in
-               
+                BankAndIbanComponentView(viewModel: viewModel, ibanInfo: personIbanInfo, coordinator: coordinator)
             }
         }
     }
@@ -105,5 +111,5 @@ struct AddNewPersonIbanView: View {
 }
 
 #Preview {
-    AddNewPersonIbanView(viewModel: AddNewPersonIbanViewModel())
+    AddNewPersonIbanView(coordinator: UIKitNavigationController.Coordinator())
 }

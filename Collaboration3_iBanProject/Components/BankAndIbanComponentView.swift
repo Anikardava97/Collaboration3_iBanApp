@@ -11,8 +11,9 @@ struct BankAndIbanComponentView: View {
     
     // MARK: - Properties
     
-    @StateObject var viewModel: AddNewPersonIbanViewModel
+    @ObservedObject var viewModel: AddNewPersonIbanViewModel
     @State var ibanInfo: IbanInfo
+    var coordinator: UIKitNavigationController.Coordinator
     
     // MARK: - Body
     
@@ -100,7 +101,7 @@ struct BankAndIbanComponentView: View {
     private var ScanIbanButton: some View {
         
         Button(action: {
-            
+            coordinator.navigate(to: .dataScannerView)
         }, label: {
             NavigationLink(value: "navigateToScanner") {
                 RoundedRectangle(cornerRadius: 12)
@@ -129,6 +130,6 @@ struct BankAndIbanComponentView: View {
 }
 
 #Preview {
-    BankAndIbanComponentView(viewModel: AddNewPersonIbanViewModel(), ibanInfo: IbanInfo(bankName: "", iban: ""))
+    BankAndIbanComponentView(viewModel: AddNewPersonIbanViewModel(), ibanInfo: IbanInfo(bankName: "", iban: ""), coordinator: UIKitNavigationController.Coordinator())
 }
   

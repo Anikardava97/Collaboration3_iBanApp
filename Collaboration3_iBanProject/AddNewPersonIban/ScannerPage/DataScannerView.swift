@@ -11,6 +11,11 @@ import VisionKit
 struct DataScannerView: View {
     //MARK: - Properties
     @EnvironmentObject var viewModel: AddNewPersonIbanViewModel
+    var coordinator: UIKitNavigationController.Coordinator
+    
+    init(coordinator: UIKitNavigationController.Coordinator) {
+        self.coordinator = coordinator
+    }
     
     //MARK: - Body
     var body: some View {
