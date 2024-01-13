@@ -63,6 +63,7 @@ struct SignUpView: View {
 }
 
 // MARK: - Preview
-#Preview {
-    SignUpView(coordinator: UIKitNavigationController.Coordinator())
-}
+//TODO: REMOVE COMMENT
+//#Preview {
+//    SignUpView(coordinator: UIKitNavigationController.Coordinator())
+//}

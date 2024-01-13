@@ -17,7 +17,7 @@ struct LogoImage: View {
             .padding(.bottom, 60)
     }
 }
-
-#Preview {
-    LogoImage()
-}
+//TODO: REMOVE COMMENT
+//#Preview {
+//    LogoImage()
+//}
