@@ -42,6 +42,7 @@ struct AddNewPersonIbanView: View {
     // MARK: - Views
     
     private var pageHeaderView: some View {
+        
         Text("Add New Person and iBan")
             .foregroundStyle(.white)
             .font(.system(size: 16))
@@ -49,6 +50,7 @@ struct AddNewPersonIbanView: View {
     }
     
     private var personNameView: some View {
+        
         VStack(spacing: 8, content: {
             
             Text("Full Name")
@@ -62,6 +64,7 @@ struct AddNewPersonIbanView: View {
                         .font(.system(size: 14))
                         .foregroundStyle(.white.opacity(0.6))
                 }
+                
                 TextField("", text: $viewModel.personFullName)
             }
             .foregroundStyle(.white)
@@ -77,6 +80,7 @@ struct AddNewPersonIbanView: View {
     }
     
     private var ibansHeaderView: some View {
+        
         HStack {
             
             Text("iBans")
@@ -88,7 +92,6 @@ struct AddNewPersonIbanView: View {
             Button(action: {
                 viewModel.ibanInfos.append(IbanInfo(bankName: "", iban: ""))
             }, label: {
-                
                 Circle()
                     .frame(width: 24, height: 24)
                     .foregroundStyle(Color(red: 101/255, green: 82/255, blue: 254/255))
@@ -104,18 +107,19 @@ struct AddNewPersonIbanView: View {
     }
     
     private var addIbansScrollView: some View {
+        
         ScrollView {
             ForEach(viewModel.ibanInfos) { personIbanInfo in
+                
                 BankAndIbanComponentView(viewModel: viewModel, ibanInfo: personIbanInfo, coordinator: coordinator)
             }
         }
     }
     
-    private var AddPersonAndIbanButton: some View {
+    private var addPersonAndIbanButton: some View {
+        
            Button(action: {
-               viewModel.addPersonToList()
                viewModel.addPerson()
-               #warning("send new person info back to previous page and go back to list page")
            }, label: {
                PrimaryButtonComponentView(text: "Add Person and iBan")
            })

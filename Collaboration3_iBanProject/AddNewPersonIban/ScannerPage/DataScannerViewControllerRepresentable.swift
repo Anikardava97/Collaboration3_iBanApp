@@ -22,6 +22,7 @@ struct DataScannerViewControllerRepresentable: UIViewControllerRepresentable {
     // MARK: - Methods
     
     func makeUIViewController(context: Context) -> DataScannerViewController {
+        
         let viewController = DataScannerViewController(
             recognizedDataTypes: [recognizedDataType],
             qualityLevel: .balanced,
@@ -33,15 +34,18 @@ struct DataScannerViewControllerRepresentable: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: DataScannerViewController, context: Context) {
+        
         uiViewController.delegate = context.coordinator
         try? uiViewController.startScanning()
     }
     
     func makeCoordinator() -> Coordinator {
+        
         Coordinator(recognizedItems: $recognizedItems)
     }
     
     static func dismantleUIViewController(_ uiViewController: DataScannerViewController, coordinator: Coordinator) {
+        
         uiViewController.stopScanning()
     }
     

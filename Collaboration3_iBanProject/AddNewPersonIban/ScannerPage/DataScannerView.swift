@@ -9,11 +9,13 @@ import SwiftUI
 import VisionKit
 
 struct DataScannerView: View {
-    //MARK: - Properties
+    
+    // MARK: - Properties
+    
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: AddNewPersonIbanViewModel
     @State var isAddIBanButtonEnabled = false
     @Binding var ibanInfo: String
-    @Environment(\.dismiss) var dismiss
     
     var coordinator: UIKitNavigationController.Coordinator
     
@@ -23,7 +25,8 @@ struct DataScannerView: View {
         self._ibanInfo = ibanInfo
     }
     
-    //MARK: - Body
+    // MARK: - Body
+    
     var body: some View {
         VStack {
             switch viewModel.dataScannerAccessStatus {
@@ -47,9 +50,12 @@ struct DataScannerView: View {
         }
     }
     
-    //MARK: - Content
+    // MARK: - Views
+    
     private var mainView: some View {
+        
         VStack(spacing: 0) {
+            
             DataScannerViewControllerRepresentable(recognizedItems: $viewModel.recognizedItems,
                                                    recognizedDataType: viewModel.recognizedDataType,
                                                    recognisesMultipleItems: viewModel.recognisesMultipleItems)
@@ -68,6 +74,7 @@ struct DataScannerView: View {
     }
     
     private var bottomContainerView: some View {
+        
         VStack {
             Text("Scanning iBAN...")
                 .font(.system(size: 18))
@@ -75,40 +82,12 @@ struct DataScannerView: View {
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(viewModel.recognizedItems) { item in
+                        
                         switch item {
                         case .text(let text):
                             if text.transcript.count < 33 {
-                                VStack {
-                                    HStack {
-                                        Text(text.transcript)
-                                        
-                                        Spacer()
-                                        
-                                        Button {
-                                            let pasteboard = UIPasteboard.general
-                                            pasteboard.string = text.transcript
-                                        } label: {
-                                            Image(systemName: "doc.on.doc.fill")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 20, height: 20)
-                                                .foregroundColor(Color.customAccentColor)
-                                            
-                                            Text("Copy iBAN")
-                                        }
-                                    }
-                                    .padding(.horizontal, 16)
-                                    
-                                    Button {
-                                        dismiss()
-                                        ibanInfo = text.transcript
-                                    } label: {
-                                        PrimaryButtonComponentView(text: "Save iBAN")
-                                    }
-                                    .padding(.top, 16)
-                                }
+                                recognizedTextView(text: text)
                             }
-                            
                         case .barcode(_):
                             Text("")
                         @unknown default:
@@ -120,5 +99,39 @@ struct DataScannerView: View {
             }
         }
         .padding(.top, 32)
+    }
+    
+    private func recognizedTextView(text: RecognizedItem.Text) -> some View {
+        
+        VStack {
+            HStack {
+                
+                Text(text.transcript)
+                
+                Spacer()
+                
+                Button {
+                    let pasteboard = UIPasteboard.general
+                    pasteboard.string = text.transcript
+                } label: {
+                    Image(systemName: "doc.on.doc.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color.customAccentColor)
+                    
+                    Text("Copy iBAN")
+                }
+            }
+            .padding(.horizontal, 16)
+            
+            Button {
+                dismiss()
+                ibanInfo = text.transcript
+            } label: {
+                PrimaryButtonComponentView(text: "Save iBAN")
+            }
+            .padding(.top, 16)
+        }
     }
 }

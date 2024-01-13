@@ -27,7 +27,6 @@ final class AddNewPersonIbanViewModel: ObservableObject {
     
     // MARK: - Properties
     
-    @Published var mockListArray: [PersonInfo] = []
     @Published var personFullName: String = ""
     @Published var ibanInfos: [IbanInfo] = [IbanInfo(bankName: "", iban: "")]
     @Published var dataScannerAccessStatus: DataScannerAccessStatusType = .notDetermined
@@ -103,11 +102,6 @@ final class AddNewPersonIbanViewModel: ObservableObject {
         if ibanInfos.count > 1 {
             ibanInfos.remove(at: index)
         }
-    }
-    
-    func addPersonToList() {
-        #warning("this data should be send back to previous page where it will be added to firebase")
-        mockListArray.append(PersonInfo(fullName: personFullName, ibanInfo: ibanInfos))
     }
     
     func addPerson() {
