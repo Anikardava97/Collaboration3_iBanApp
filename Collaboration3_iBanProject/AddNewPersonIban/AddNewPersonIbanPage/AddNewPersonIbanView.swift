@@ -10,7 +10,6 @@ import SwiftUI
 struct AddNewPersonIbanView: View {
     
     // MARK: - Properties
-    
     @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: AddNewPersonIbanViewModel
     var coordinator: UIKitNavigationController.Coordinator
