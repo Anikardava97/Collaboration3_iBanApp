@@ -28,7 +28,7 @@ final class AddNewPersonIbanViewModel: ObservableObject {
     // MARK: - Properties
     
     @Published var personFullName: String = ""
-    @Published var ibanInfos: [IbanInfo] = [IbanInfo(bankName: "", iban: "")]
+    @Published var ibanInfos: [IbanInfo] = [IbanInfo(id: UUID(), bankName: "", iban: "")]
     @Published var dataScannerAccessStatus: DataScannerAccessStatusType = .notDetermined
     @Published var recognizedItems: [RecognizedItem] = []
     @Published var scanType: ScanType = .text

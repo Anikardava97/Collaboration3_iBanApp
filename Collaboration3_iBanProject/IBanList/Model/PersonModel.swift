@@ -14,7 +14,7 @@ struct PersonInfoModel: Identifiable {
 }
 
 struct IbanInfo: Identifiable {
-    let id = UUID()
+    let id: UUID
     var bankName: String
     var iban: String
 }

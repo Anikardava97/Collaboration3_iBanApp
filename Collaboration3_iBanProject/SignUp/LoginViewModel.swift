@@ -38,7 +38,7 @@ final class LoginViewModel: ObservableObject {
     }
     
     private func navigateToMainPage() {
-        coordinator.navigate(to: .mainView)
+        coordinator.navigate(to: .ibanListPage)
     }
 }
 

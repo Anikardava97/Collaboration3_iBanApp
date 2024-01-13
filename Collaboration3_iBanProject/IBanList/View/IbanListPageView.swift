@@ -11,7 +11,7 @@ struct IbanListPageView: View {
     
     // MARK: - Properties
     @ObservedObject var viewModel = IbanListPageViewModel()
-    
+    var coordinator: UIKitNavigationController.Coordinator
     
     // MARK: - body
     var body: some View {
@@ -25,6 +25,9 @@ struct IbanListPageView: View {
             
             AddPersonAndIbanButtonStack
         }
+        .task {
+            viewModel.fetchPersonInfo()
+        }
     }
     
     
@@ -35,9 +38,12 @@ struct IbanListPageView: View {
             
             VStack(spacing: 20) {
                 
-                ForEach(viewModel.dummyIbanData) { person in
+                ForEach(viewModel.personsArray) { person in
                     
                     IbanListItemView(person: person)
+                        .onTapGesture {
+                            coordinator.navigate(to: .ibanDetailsPage(personInfo: person))
+                        }
                 }
             }
         }
@@ -47,8 +53,11 @@ struct IbanListPageView: View {
     private var AddPersonAndIbanButtonStack: some View {
         
         VStack {
-            
-            PrimaryButtonComponentView(text: "Add Person and IBan")
+            Button {
+                coordinator.navigate(to: .addNewPersonIbanView)
+            } label: {
+                PrimaryButtonComponentView(text: "Add Person and IBan")
+            }
         }
         .frame(height: 60)
         .background(Color.customBackgroundColor)
@@ -56,9 +65,9 @@ struct IbanListPageView: View {
 }
 
 
-// MARK: - Preview
-struct IbanListPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        IbanListPageView()
-    }
-}
+//// MARK: - Preview
+//struct IbanListPageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IbanListPageView()
+//    }
+//}

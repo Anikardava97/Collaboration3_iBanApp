@@ -24,10 +24,7 @@ struct OnboardingView: View {
     //MARK: - Body
     var body: some View {
         if onboardingViewed {
-            EmptyView()
-                .onAppear {
-                    coordinator.navigate(to: .loginPage)
-                }
+            LoginView(coordinator: coordinator)
         } else {
             onboarding
         }

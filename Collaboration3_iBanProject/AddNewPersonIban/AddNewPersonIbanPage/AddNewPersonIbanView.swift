@@ -89,7 +89,7 @@ struct AddNewPersonIbanView: View {
             Spacer()
             
             Button(action: {
-                viewModel.ibanInfos.append(IbanInfo(bankName: "", iban: ""))
+                viewModel.ibanInfos.append(IbanInfo(id: UUID(), bankName: "", iban: ""))
             }, label: {
                 Circle()
                     .frame(width: 24, height: 24)
@@ -119,6 +119,7 @@ struct AddNewPersonIbanView: View {
         
            Button(action: {
                viewModel.addPerson()
+               dismiss()
            }, label: {
                PrimaryButtonComponentView(text: "Add Person and iBan")
            })

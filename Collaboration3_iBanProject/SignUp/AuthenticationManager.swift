@@ -52,7 +52,6 @@ final class AuthenticationManager {
         }
         
         let data: [String: Any] = [
-            "id": person.id,
             "fullName": person.fullName,
             "ibanInfo": ibanInfoArray
         ]
@@ -65,5 +64,40 @@ final class AuthenticationManager {
             }
         }
     }
-}
 
+    func fetchPersonData(completion: @escaping ([PersonInfoModel]) -> Void) {
+        let dataBase = Firestore.firestore()
+        let reference = dataBase.collection("Persons")
+        
+        reference.getDocuments { snapshot, error in
+            guard let snapshot = snapshot, error == nil else {
+                print("Error fetching documents: \(String(describing: error))")
+                completion([])
+                return
+            }
+            
+            var personInfoArray = [PersonInfoModel]()
+            
+            for document in snapshot.documents {
+                let data = document.data()
+                let fullName = data["fullName"] as? String ?? ""
+                
+                var ibanInfoArray = [IbanInfo]()
+                if let ibans = data["ibanInfo"] as? [[String: Any]] {
+                    for ibanData in ibans {
+                        let id = UUID(uuidString: ibanData["id"] as? String ?? "") ?? UUID()
+                        let bankName = ibanData["bankName"] as? String ?? ""
+                        let iban = ibanData["iban"] as? String ?? ""
+                        let ibanInfo = IbanInfo(id: id, bankName: bankName, iban: iban)
+                        ibanInfoArray.append(ibanInfo)
+                    }
+                }
+                
+                let person = PersonInfoModel(id: UUID(), fullName: fullName, ibanInfo: ibanInfoArray)
+                personInfoArray.append(person)
+            }
+            
+            completion(personInfoArray)
+        }
+    }
+}

@@ -29,7 +29,6 @@
 		EE4D2B562B4EB555003242BD /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B552B4EB555003242BD /* OnboardingView.swift */; };
 		EE4D2B582B4EB566003242BD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B572B4EB566003242BD /* LoginView.swift */; };
 		EE4D2B5A2B4EB57C003242BD /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B592B4EB57C003242BD /* SignUpView.swift */; };
-		EE4D2B5E2B4EB5B1003242BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B5D2B4EB5B1003242BD /* ContentView.swift */; };
 		EE4D2B612B4EB616003242BD /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B602B4EB616003242BD /* Color+Extension.swift */; };
 		EE4D2B642B4EB8ED003242BD /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B632B4EB8ED003242BD /* Image+Extension.swift */; };
 		EE4D2B662B4EBA1A003242BD /* PrimaryButtonComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2B652B4EBA1A003242BD /* PrimaryButtonComponentView.swift */; };
@@ -76,7 +75,6 @@
 		EE4D2B552B4EB555003242BD /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EE4D2B572B4EB566003242BD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = ../Login/LoginView.swift; sourceTree = "<group>"; };
 		EE4D2B592B4EB57C003242BD /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		EE4D2B5D2B4EB5B1003242BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EE4D2B602B4EB616003242BD /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		EE4D2B632B4EB8ED003242BD /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		EE4D2B652B4EBA1A003242BD /* PrimaryButtonComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonComponentView.swift; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */,
-				EE4D2B5D2B4EB5B1003242BD /* ContentView.swift */,
 				EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */,
 				EE4D2B492B4EB42D003242BD /* Onboarding */,
 				EE4D2B4F2B4EB48D003242BD /* SignUp */,
@@ -408,7 +405,6 @@
 				EE4D2B662B4EBA1A003242BD /* PrimaryButtonComponentView.swift in Sources */,
 				EE4D2B642B4EB8ED003242BD /* Image+Extension.swift in Sources */,
 				328149132B51C67C005A373F /* ListItemComponent.swift in Sources */,
-				EE4D2B5E2B4EB5B1003242BD /* ContentView.swift in Sources */,
 				328149192B520822005A373F /* IbanDetailsView.swift in Sources */,
 				EE4D2B562B4EB555003242BD /* OnboardingView.swift in Sources */,
 				328149172B52018B005A373F /* IbanListPageViewModel.swift in Sources */,

@@ -62,10 +62,10 @@ struct CustomIbanComponentView: View {
     }
 }
 
-
-// MARK: - Preview
-struct CustomIbanComponentView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomIbanComponentView(iban: IbanInfo(bankName: "", iban: ""))
-    }
-}
+//
+//// MARK: - Preview
+//struct CustomIbanComponentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomIbanComponentView(iban: IbanInfo(bankName: "", iban: ""))
+//    }
+//}

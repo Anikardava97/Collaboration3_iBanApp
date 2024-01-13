@@ -12,7 +12,8 @@ enum NavigationPage {
     case loginPage
     case signupPage
     case successPage
-    case mainView
+    case ibanListPage
+    case ibanDetailsPage(personInfo: PersonInfoModel)
     case addNewPersonIbanView
     case dataScannerView(ibanInfo: Binding<String>)
 }
@@ -33,8 +34,10 @@ struct UIKitNavigationController: UIViewControllerRepresentable {
                 viewController = UIHostingController(rootView: SignUpView(coordinator: self))
             case .successPage:
                 viewController = UIHostingController(rootView: SuccessView(coordinator: self))
-            case .mainView:
-                viewController = UIHostingController(rootView: ContentView(coordinator: self))
+            case .ibanListPage:
+                viewController = UIHostingController(rootView: IbanListPageView(coordinator: self))
+            case .ibanDetailsPage(let person):
+                viewController = UIHostingController(rootView: IbanDetailsView(coordinator: self, person: person))
             case .addNewPersonIbanView:
                 viewController = UIHostingController(rootView: AddNewPersonIbanView(coordinator: self))
             case .dataScannerView(let iban):

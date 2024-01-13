@@ -155,8 +155,8 @@ struct BankAndIbanComponentView: View {
         .foregroundStyle(.black)
     }
 }
-
-#Preview {
-    BankAndIbanComponentView(viewModel: AddNewPersonIbanViewModel(), ibanInfo: IbanInfo(bankName: "", iban: ""), coordinator: UIKitNavigationController.Coordinator())
-}
-  
+//
+//#Preview {
+//    BankAndIbanComponentView(viewModel: AddNewPersonIbanViewModel(), ibanInfo: IbanInfo(bankName: "", iban: ""), coordinator: UIKitNavigationController.Coordinator())
+//}
+//  

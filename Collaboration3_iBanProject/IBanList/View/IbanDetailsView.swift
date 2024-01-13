@@ -10,9 +10,9 @@ import SwiftUI
 struct IbanDetailsView: View {
     
     // MARK: - Properties
+    var coordinator: UIKitNavigationController.Coordinator
     @State var person: PersonInfoModel
-    
-    
+
     // MARK: - body
     var body: some View {
         
@@ -30,7 +30,6 @@ struct IbanDetailsView: View {
             .padding(.horizontal)
         }
     }
-    
     
     // MARK: - Private Views
     private var titleDisplayView: some View {
@@ -74,24 +73,24 @@ struct IbanDetailsView: View {
 
 
 // MARK: - Preview
-struct IbanDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        IbanDetailsView(person: PersonInfoModel(
-            fullName: "Anri Beridze",
-            ibanInfo: [
-                IbanInfo(
-                    bankName: "BOG",
-                    iban: "AdnuSD123kISdf1"),
-                IbanInfo(
-                    bankName: "TBC",
-                    iban: "AdnuSD123kISdf1"),
-                IbanInfo(
-                    bankName: "BOG",
-                    iban: "AdnuSD123kISdf1"),
-                IbanInfo(
-                    bankName: "TBC",
-                    iban: "AdnuSD123kISdf1"),
-            ]
-        ))
-    }
-}
+//struct IbanDetailsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IbanDetailsView(person: PersonInfoModel(
+//            fullName: "Anri Beridze",
+//            ibanInfo: [
+//                IbanInfo(
+//                    bankName: "BOG",
+//                    iban: "AdnuSD123kISdf1"),
+//                IbanInfo(
+//                    bankName: "TBC",
+//                    iban: "AdnuSD123kISdf1"),
+//                IbanInfo(
+//                    bankName: "BOG",
+//                    iban: "AdnuSD123kISdf1"),
+//                IbanInfo(
+//                    bankName: "TBC",
+//                    iban: "AdnuSD123kISdf1"),
+//            ]
+//        ))
+//    }
+//}
