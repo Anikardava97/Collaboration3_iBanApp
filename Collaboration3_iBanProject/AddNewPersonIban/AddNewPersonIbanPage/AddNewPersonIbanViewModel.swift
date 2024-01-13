@@ -105,6 +105,6 @@ final class AddNewPersonIbanViewModel: ObservableObject {
     }
     
     func addPerson() {
-            AuthenticationManager.shared.addPerson(person: PersonInfo(fullName: personFullName, ibanInfo: ibanInfos))
+            AuthenticationManager.shared.addPerson(person: PersonInfoModel(fullName: personFullName, ibanInfo: ibanInfos))
         }
 }

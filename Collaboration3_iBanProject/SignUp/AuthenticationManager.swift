@@ -37,7 +37,7 @@ final class AuthenticationManager {
         return AuthorizationDataResultModel(user: authorizationDataResult.user)
     }
     
-    func addPerson(person: PersonInfo) {
+    func addPerson(person: PersonInfoModel) {
         let dataBase = Firestore.firestore()
         let reference = dataBase.collection("Persons").document(person.fullName)
         
@@ -52,6 +52,7 @@ final class AuthenticationManager {
         }
         
         let data: [String: Any] = [
+            "id": person.id,
             "fullName": person.fullName,
             "ibanInfo": ibanInfoArray
         ]

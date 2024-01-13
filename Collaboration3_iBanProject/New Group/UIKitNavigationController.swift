@@ -50,7 +50,7 @@ struct UIKitNavigationController: UIViewControllerRepresentable {
     
     //MARK: - Make UIViewController
     func makeUIViewController(context: Context) -> UINavigationController {
-        let rootView = LoginView(coordinator: context.coordinator)
+        let rootView = OnboardingView(coordinator: context.coordinator)
         let rootViewController = UIHostingController(rootView: rootView)
         let navigationController = UINavigationController(rootViewController: rootViewController)
         context.coordinator.navigationController = navigationController

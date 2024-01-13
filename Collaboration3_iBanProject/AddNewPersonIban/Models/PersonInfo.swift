@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct PersonInfo {
-    var fullName: String
-    var ibanInfo: [IbanInfo]
-}
-
-struct IbanInfo: Identifiable {
-    let id = UUID()
-    var bankName: String
-    var iban: String
-}
+//struct PersonInfo {
+//    var fullName: String
+//    var ibanInfo: [IbanInfo]
+//}
+//
+//struct IbanInfo: Identifiable {
+//    let id = UUID()
+//    var bankName: String
+//    var iban: String
+//}
