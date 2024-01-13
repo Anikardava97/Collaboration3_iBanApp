@@ -6,103 +6,64 @@
 //
 
 import SwiftUI
-
+import Firebase
 
 struct LoginView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    // MARK: - Properties
+    var coordinator: UIKitNavigationController.Coordinator
+    @StateObject private var viewModel: LoginViewModel
     
+    // MARK: - Init
+    init(coordinator: UIKitNavigationController.Coordinator) {
+        self.coordinator = coordinator
+        self._viewModel = StateObject(wrappedValue: LoginViewModel(coordinator: coordinator))
+    }
+    
+    // MARK: - Body
     var body: some View {
-        VStack {
-            Spacer()
-            Image("logoWithTitle")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 150, height: 150)
-                .padding(.bottom, 60)
-            
-            EmailTextField(email: $email)
-        
-            PasswordSecureField(password: $password)
-            
-            HStack {
-                Text("Don't have an account?")
-                    .foregroundColor(.white)
-                
-                Button(action: {
-                    // Action for signup button
-                }) {
-                    Text("Sign Up")
-                        .foregroundColor(.customAccentColor)
-                }
+        content
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(
+                    title: Text("Login Error"),
+                    message: Text(viewModel.alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
             }
-            .padding(.top, 20)
-            
+    }
+    
+    // MARK: - Content
+    private var content: some View {
+        VStack(spacing: 20) {
             Spacer()
-            LoginButton()
-            
+            LogoImage()
+            EmailTextField(email: $viewModel.email)
+            PasswordSecureField(password: $viewModel.password)
+            accountCheckView
+            Spacer()
+            AuthActionButtonView(actionText: "Log In", onTap: viewModel.login)
             Spacer()
         }
         .background(Color.customBackgroundColor)
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
     }
-}
-
-struct EmailTextField: View {
-    @Binding var email: String
     
-    var body: some View {
+    private var accountCheckView: some View {
         HStack {
-            Text("Email")
+            Text("Don't have an account?")
                 .foregroundColor(.white)
-            Spacer()
+            
+            Button(action: {
+                coordinator.navigate(to: .signupPage)
+            }) {
+                Text("Sign Up")
+                    .foregroundColor(.customAccentColor)
+            }
         }
-        .padding(.horizontal)
-        TextField("Enter your email address", text: $email)
-            .padding()
-            .background(Color.customTextFieldColor)
-            .tint(.white)
-            .cornerRadius(8.0)
-            .padding(.horizontal)
+        .padding(.top, 20)
     }
 }
-
-struct PasswordSecureField: View {
-    @Binding var password: String
-    
-    var body: some View {
-        HStack {
-            Text("Password")
-                .foregroundColor(.white)
-            Spacer()
-        }
-        .padding(.horizontal)
-        
-        SecureField("Enter your password", text: $password)
-            .padding()
-            .background(Color.customTextFieldColor)
-            .cornerRadius(8.0)
-            .padding(.horizontal)
-    }
-}
-
-struct LoginButton: View {
-    var body: some View {
-        Button(action: {
-            // Action for login button
-        }) {
-            Text("Log In")
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.customAccentColor)
-                .cornerRadius(8.0)
-                .padding(.horizontal)
-        }
-    }
-}
-
-
-#Preview {
-    LoginView()
-}
+//TODO: REMOVE COMMENT
+//#Preview {
+//    LoginView(coordinator: UIKitNavigationController.Coordinator())
+//}

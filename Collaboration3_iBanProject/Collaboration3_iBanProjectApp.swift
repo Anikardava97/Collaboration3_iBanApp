@@ -10,13 +10,14 @@ import FirebaseCore
 
 @main
 struct Collaboration3_iBanProjectApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UIKitNavigationController()
                 .tint(Color.customAccentColor)
+                .background(Color.customBackgroundColor)
+                .edgesIgnoringSafeArea(.all)
         }
     }
 }
