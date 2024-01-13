@@ -63,7 +63,7 @@ struct LoginView: View {
         .padding(.top, 20)
     }
 }
-
-#Preview {
-    LoginView(coordinator: UIKitNavigationController.Coordinator())
-}
+//TODO: REMOVE COMMENT
+//#Preview {
+//    LoginView(coordinator: UIKitNavigationController.Coordinator())
+//}

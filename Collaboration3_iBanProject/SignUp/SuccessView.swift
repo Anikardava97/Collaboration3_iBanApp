@@ -68,7 +68,7 @@ struct SuccessView: View {
         }
     }
 }
-
-#Preview {
-    SuccessView(coordinator: UIKitNavigationController.Coordinator())
-}
+//TODO: REMOVE COMMENT
+//#Preview {
+//    SuccessView(coordinator: UIKitNavigationController.Coordinator())
+//}
