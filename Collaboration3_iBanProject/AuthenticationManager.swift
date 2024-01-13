@@ -65,6 +65,65 @@ final class AuthenticationManager {
         }
     }
 
+    func updateIban(person: PersonInfoModel) {
+        let dataBase = Firestore.firestore()
+        let reference = dataBase.collection("Persons").document(person.fullName)
+        
+        reference.getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching document: \(error)")
+            } else if let document = document, document.exists {
+                reference.updateData(["ibanInfo": FieldValue.delete()]) { error in
+                    if let error = error {
+                        print("Error deleting IBAN info: \(error)")
+                    } else {
+                        let ibanInfoArray = person.ibanInfo.map { ibanInfo in
+                            return [
+                                "id": ibanInfo.id.uuidString,
+                                "bankName": ibanInfo.bankName,
+                                "iban": ibanInfo.iban
+                            ]
+                        }
+
+                        let updatedData: [String: Any] = [
+                            "fullName": person.fullName,
+                            "ibanInfo": ibanInfoArray
+                        ]
+
+                        reference.setData(updatedData) { error in
+                            if let error = error {
+                                print("Error updating document: \(error)")
+                            } else {
+                                print("Document updated successfully")
+                            }
+                        }
+                    }
+                }
+            } else {
+                let ibanInfoArray = person.ibanInfo.map { ibanInfo in
+                    return [
+                        "id": ibanInfo.id.uuidString,
+                        "bankName": ibanInfo.bankName,
+                        "iban": ibanInfo.iban
+                    ]
+                }
+
+                let newDocumentData: [String: Any] = [
+                    "fullName": person.fullName,
+                    "ibanInfo": ibanInfoArray
+                ]
+
+                reference.setData(newDocumentData) { error in
+                    if let error = error {
+                        print("Error creating document: \(error)")
+                    } else {
+                        print("Document created successfully")
+                    }
+                }
+            }
+        }
+    }
+    
     func fetchPersonData(completion: @escaping ([PersonInfoModel]) -> Void) {
         let dataBase = Firestore.firestore()
         let reference = dataBase.collection("Persons")

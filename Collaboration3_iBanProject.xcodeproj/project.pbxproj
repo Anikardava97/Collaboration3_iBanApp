@@ -46,6 +46,7 @@
 		EE4D2C362B4F42F9003242BD /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C352B4F42F9003242BD /* SuccessView.swift */; };
 		EE4D2C3F2B4F5396003242BD /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = EE4D2C3E2B4F5396003242BD /* SPConfetti */; };
 		EE4D2C412B4FC417003242BD /* UIKitNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */; };
+		EED80B3B2B52FE4D001EC651 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED80B3A2B52FE4D001EC651 /* CustomTextField.swift */; };
 		EEE57DB32B4FF99D00FDB168 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE57DB22B4FF99D00FDB168 /* AuthenticationManager.swift */; };
 		EEE57DB52B500CF100FDB168 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE57DB42B500CF100FDB168 /* LoginViewModel.swift */; };
 		EEE57DB72B500DA300FDB168 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE57DB62B500DA300FDB168 /* SignUpViewModel.swift */; };
@@ -87,6 +88,7 @@
 		EE4D2C332B4F3FE0003242BD /* EmailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTextField.swift; sourceTree = "<group>"; };
 		EE4D2C352B4F42F9003242BD /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIKitNavigationController.swift; path = "New Group/UIKitNavigationController.swift"; sourceTree = "<group>"; };
+		EED80B3A2B52FE4D001EC651 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		EEE57DB22B4FF99D00FDB168 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		EEE57DB42B500CF100FDB168 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EEE57DB62B500DA300FDB168 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				328149122B51C67C005A373F /* ListItemComponent.swift */,
 				3281491A2B520EAF005A373F /* CustomIbanComponentView.swift */,
+				EED80B3A2B52FE4D001EC651 /* CustomTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			children = (
 				EE4D2B3B2B4EB3A8003242BD /* Collaboration3_iBanProjectApp.swift */,
 				EE4D2C402B4FC417003242BD /* UIKitNavigationController.swift */,
+				EEE57DB22B4FF99D00FDB168 /* AuthenticationManager.swift */,
 				EE4D2B492B4EB42D003242BD /* Onboarding */,
 				EE4D2B4F2B4EB48D003242BD /* SignUp */,
 				EE4D2B522B4EB4C2003242BD /* IBanList */,
@@ -243,7 +247,6 @@
 		EE4D2B4F2B4EB48D003242BD /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				EEE57DB22B4FF99D00FDB168 /* AuthenticationManager.swift */,
 				EEE57DB42B500CF100FDB168 /* LoginViewModel.swift */,
 				EE4D2B572B4EB566003242BD /* LoginView.swift */,
 				EEE57DB62B500DA300FDB168 /* SignUpViewModel.swift */,
@@ -392,6 +395,7 @@
 				328A76B32B51A7F900E337FE /* PersonModel.swift in Sources */,
 				3281491B2B520EAF005A373F /* CustomIbanComponentView.swift in Sources */,
 				323D684B2B5193FF00F12B49 /* IbanListPageView.swift in Sources */,
+				EED80B3B2B52FE4D001EC651 /* CustomTextField.swift in Sources */,
 				A10694582B5168FC009E5843 /* BankAndIbanComponentView.swift in Sources */,
 				A10694562B508EA7009E5843 /* AddNewPersonIbanViewModel.swift in Sources */,
 				A10694542B508E3A009E5843 /* AddNewPersonIbanView.swift in Sources */,

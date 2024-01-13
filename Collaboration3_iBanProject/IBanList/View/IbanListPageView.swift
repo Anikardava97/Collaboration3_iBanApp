@@ -30,9 +30,12 @@ struct IbanListPageView: View {
         }
     }
     
-    
     // MARK: - Private Views
     private var personListScrollView: some View {
+        VStack {
+        Text("iBan's List")
+            .foregroundStyle(.white)
+            .font(.system(size: 20, weight: .bold))
         
         ScrollView {
             
@@ -49,6 +52,7 @@ struct IbanListPageView: View {
         }
         .padding(.bottom, 80)
     }
+}
     
     private var AddPersonAndIbanButtonStack: some View {
         
@@ -63,11 +67,3 @@ struct IbanListPageView: View {
         .background(Color.customBackgroundColor)
     }
 }
-
-
-//// MARK: - Preview
-//struct IbanListPageView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        IbanListPageView()
-//    }
-//}
